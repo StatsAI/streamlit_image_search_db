@@ -3,6 +3,20 @@ import DeepImageSearch.config as config
 from DeepImageSearch import Load_Data, Search_Setup
 import requests
 import zipfile
+import os
+import pandas as pd
+import matplotlib.pyplot as plt
+from PIL import Image
+from tqdm import tqdm
+import numpy as np
+from torchvision import transforms
+import torch
+from torch.autograd import Variable
+import timm
+from PIL import ImageOps
+import math
+import faiss
+
 
 ####################################################################################################################################################
 # Download and unzip images
@@ -24,7 +38,11 @@ if __name__ == "__main__":
 # Load images from a folder
 image_list = Load_Data().from_folder(['animals'])
 
-#s.header("Image Recommendation App")
+# Load indexed images
+loaded_index = faiss.read_index("https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/image_features_vectors.idx")
+
+# Load image features
+image_data = pd.read_pickle("https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/image_data_features.pkl")
 
 ####################################################################################################################################################
 
@@ -50,4 +68,7 @@ images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
                           step = 1)
 
 ####################################################################################################################################################
+
+# Set up the search engine
+s = Search_Setup(image_list=image_list,model_name='vgg19',pretrained=True,image_count= None)
 
