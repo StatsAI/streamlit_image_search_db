@@ -144,3 +144,6 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
         fig.subplots_adjust(top=0.93)
         fig.suptitle('Similar Result Found', fontsize=22)
         plt.show(fig)
+
+
+plot_similar_images_new(image_path = image_list[350],number_of_images=16)
