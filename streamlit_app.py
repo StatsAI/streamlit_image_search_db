@@ -144,7 +144,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
         query_vector = _get_query_vector(image_path)
         img_list = list(_search_by_vector(query_vector, number_of_images).values())
 
-        img_list = [path.replace('drive/MyDrive/archive/animals/', '') for path in image_paths] #Image Path
+        img_list = [path.replace('drive/MyDrive/archive/animals/', '') for path in img_list] #Image Path
 
         st.write(img_list)
 
