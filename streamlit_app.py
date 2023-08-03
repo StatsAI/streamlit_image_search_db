@@ -119,7 +119,6 @@ def _search_by_vector(v, n: int):
         return image_paths
 
 
-
 def plot_similar_images_new(image_path: str, number_of_images: int = 6):
         """
         Plots a given image and its most similar images according to the indexed image features.
