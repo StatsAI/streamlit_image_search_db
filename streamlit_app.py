@@ -42,17 +42,29 @@ url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image
 download_and_unzip(url)
 
 
-# Load images from a folder
-#@st.cache_data(persist="disk")
-image_list = Load_Data().from_folder(['animals'])
-	
-# Load indexed images
-#@st.cache_data(persist="disk")
-loaded_index = faiss.read_index("image_features_vectors.idx")
+def _load_assets():
+    # Load images from a folder
+    image_list = Load_Data().from_folder(['animals'])
 
-# Load image features
-#@st.cache_data(persist="disk")
-image_data = pd.read_pickle("image_data_features.pkl")
+    # Load indexed images
+    loaded_index = faiss.read_index("image_features_vectors.idx")
+
+    # Load image features
+    image_data = pd.read_pickle("image_data_features.pkl")
+
+    return image_list, loaded_index, image_data
+
+
+if "data" not in st.session_state:
+    st.session_state.data = _load_assets()
+
+
+# Set up the search engine
+s = Search_Setup(image_list=st.session_state.data[0],
+                 model_name='vgg19',
+                 pretrained=True,
+                 image_count=None)
+
 
 # @st.cache_data(persist="disk")
 # def _load_assets():
@@ -100,7 +112,7 @@ images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
 ####################################################################################################################################################
 
 # Set up the search engine
-s = Search_Setup(image_list=image_list,model_name='vgg19',pretrained=True,image_count= None)
+#s = Search_Setup(image_list=image_list,model_name='vgg19',pretrained=True,image_count= None)
 
 def _extract(img):
         # Resize and convert the image
