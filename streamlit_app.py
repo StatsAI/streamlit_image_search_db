@@ -44,7 +44,7 @@ image_list = Load_Data().from_folder(['animals'])
 loaded_index = faiss.read_index("image_features_vectors.idx")
 
 # Load image features
-#image_data = pd.read_pickle("https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/image_data_features.pkl")
+image_data = pd.read_pickle("image_data_features.pkl")
 
 ####################################################################################################################################################
 
