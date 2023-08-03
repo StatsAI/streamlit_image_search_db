@@ -17,6 +17,8 @@ from PIL import ImageOps
 import math
 import faiss
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 ####################################################################################################################################################
 # Download and unzip images
 
@@ -156,6 +158,13 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
         img_list = [path.replace('drive/MyDrive/archive/', '') for path in img_list] #Image Path
 
+        img_list.append(image_path)
+
+        im_list = list(set(img_list))
+
+        number_of_images = 16
+
+
         #st.write(img_list)
     
         grid_size = math.ceil(math.sqrt(number_of_images))
@@ -174,6 +183,6 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
 #st.write(str(images_recs))
 
-st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images=16))
+st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20)
 
 
