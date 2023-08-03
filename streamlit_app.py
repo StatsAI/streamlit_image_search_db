@@ -99,14 +99,25 @@ def _get_query_vector(image_path: str):
         return query_vector
 
 
+# def _search_by_vector(v, n: int):
+#         #self.v = v
+#         #self.n = n
+
+#         #index = faiss.read_index(config.image_features_vectors_idx(self.model_name))
+
+#         D, I = loaded_index.search(np.array([v], dtype=np.float32), n)
+#         return dict(zip(I[0], image_data.iloc[I[0]]['images_paths'].to_list()))
+
+
 def _search_by_vector(v, n: int):
         #self.v = v
         #self.n = n
 
-        #index = faiss.read_index(config.image_features_vectors_idx(self.model_name))
+        D, I = loaded_index.search(np.array([v], dtype=np.float32), n) #Image Path
+        image_paths = [os.path.abspath(path) for path in image_data.iloc[I[0]]['images_paths'].to_list()] #Image Path
+        image_paths = [path.replace('/ImageSearch/drive/MyDrive/', '/') for path in image_paths] #Image Path
+        return image_paths
 
-        D, I = loaded_index.search(np.array([v], dtype=np.float32), n)
-        return dict(zip(I[0], image_data.iloc[I[0]]['images_paths'].to_list()))
 
 
 def plot_similar_images_new(image_path: str, number_of_images: int = 6):
