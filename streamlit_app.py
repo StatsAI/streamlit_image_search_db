@@ -115,8 +115,8 @@ def _search_by_vector(v, n: int):
 
         D, I = loaded_index.search(np.array([v], dtype=np.float32), n) #Image Path
         image_paths = [os.path.abspath(path) for path in image_data.iloc[I[0]]['images_paths'].to_list()] #Image Path
-        #image_paths = [path.replace('/ImageSearch/drive/MyDrive/', '/') for path in image_paths] #Image Path
-        image_paths = [path.replace('drive/MyDrive/archive/animals/', '/') for path in image_paths] #Image Path
+        image_paths = [path.replace('/ImageSearch/drive/MyDrive/', '/') for path in image_paths] #Image Path
+        #image_paths = [path.replace('drive/MyDrive/archive/animals/', '/') for path in image_paths] #Image Path
 
         return dict(zip(I[0], image_data.iloc[I[0]]['images_paths'].to_list()))
         #return image_paths
@@ -143,6 +143,8 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
         query_vector = _get_query_vector(image_path)
         img_list = list(_search_by_vector(query_vector, number_of_images).values())
+
+        img_list = [path.replace('drive/MyDrive/archive/animals/', '') for path in image_paths] #Image Path
 
         st.write(img_list)
 
