@@ -144,6 +144,9 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
         plt.imshow(input_img_resized)
         plt.show()
 
+        st.write(image_path)
+
+
         query_vector = _get_query_vector(image_path)
         img_list = list(_search_by_vector(query_vector, number_of_images).values())
 
