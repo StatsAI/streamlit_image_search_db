@@ -10,7 +10,7 @@ torchvision==0.15.2
 faiss-cpu==1.7.4
 #faiss
 #zipfile
-os
+#os
 timm
 math
 
