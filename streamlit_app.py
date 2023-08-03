@@ -88,7 +88,7 @@ def _extract(img):
         x = Variable(torch.unsqueeze(x, dim=0).float(), requires_grad=False)
 
         # Extract features
-        feature = st.model(x)
+        feature = s.model(x)
         feature = feature.data.numpy().flatten()
         return feature / np.linalg.norm(feature)
 
