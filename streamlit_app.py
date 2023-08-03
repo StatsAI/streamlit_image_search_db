@@ -160,7 +160,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
         img_list.append(image_path)
 
-        im_list = list(set(img_list))
+        img_list = list(set(img_list))
 
         number_of_images = 16
 
