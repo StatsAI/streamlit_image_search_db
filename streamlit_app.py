@@ -42,7 +42,7 @@ if __name__ == "__main__":
     download_and_unzip(url)
 
 @st.cache_resource
-def load_assets():
+def _load_assets():
 	# Load images from a folder
 	image_list = Load_Data().from_folder(['animals'])
 	
@@ -52,7 +52,7 @@ def load_assets():
 	# Load image features
 	image_data = pd.read_pickle("image_data_features.pkl")
 
-load_assets()
+_load_assets()
 ####################################################################################################################################################
 
 st.title('Image Recommendation App')
