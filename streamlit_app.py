@@ -74,3 +74,73 @@ images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
 # Set up the search engine
 s = Search_Setup(image_list=image_list,model_name='vgg19',pretrained=True,image_count= None)
 
+def _extract(img):
+        # Resize and convert the image
+        img = img.resize((224, 224))
+        img = img.convert('RGB')
+
+        # Preprocess the image
+        preprocess = transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406],std=[0.229,0.224, 0.225]),
+        ])
+        x = preprocess(img)
+        x = Variable(torch.unsqueeze(x, dim=0).float(), requires_grad=False)
+
+        # Extract features
+        feature = st.model(x)
+        feature = feature.data.numpy().flatten()
+        return feature / np.linalg.norm(feature)
+
+
+def _get_query_vector(image_path: str):
+        img = Image.open(image_path)
+        query_vector = _extract(img)
+        return query_vector
+
+
+def _search_by_vector(v, n: int):
+        #self.v = v
+        #self.n = n
+
+        #index = faiss.read_index(config.image_features_vectors_idx(self.model_name))
+
+        D, I = loaded_index.search(np.array([v], dtype=np.float32), n)
+        return dict(zip(I[0], image_data.iloc[I[0]]['images_paths'].to_list()))
+
+
+def plot_similar_images_new(image_path: str, number_of_images: int = 6):
+        """
+        Plots a given image and its most similar images according to the indexed image features.
+
+        Parameters:
+        -----------
+        image_path : str
+            The path to the query image to be plotted.
+        number_of_images : int, optional (default=6)
+            The number of most similar images to the query image to be plotted.
+        """
+        input_img = Image.open(image_path)
+        input_img_resized = ImageOps.fit(input_img, (224, 224), Image.LANCZOS)
+        plt.figure(figsize=(5, 5))
+        plt.axis('off')
+        plt.title('Input Image', fontsize=18)
+        plt.imshow(input_img_resized)
+        plt.show()
+
+        query_vector = _get_query_vector(image_path)
+        img_list = list(_search_by_vector(query_vector, number_of_images).values())
+
+        grid_size = math.ceil(math.sqrt(number_of_images))
+        axes = []
+        fig = plt.figure(figsize=(20, 15))
+        for a in range(number_of_images):
+            axes.append(fig.add_subplot(grid_size, grid_size, a + 1))
+            plt.axis('off')
+            img = Image.open(img_list[a])
+            img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
+            plt.imshow(img_resized)
+        fig.tight_layout()
+        fig.subplots_adjust(top=0.93)
+        fig.suptitle('Similar Result Found', fontsize=22)
+        plt.show(fig)
