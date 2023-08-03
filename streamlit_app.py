@@ -137,14 +137,14 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
         #st.write(image_path)
     
-        input_img_resized = ImageOps.fit(input_img, (224, 224), Image.LANCZOS)
-        plt.figure(figsize=(5, 5))
-        plt.axis('off')
-        plt.title('Input Image', fontsize=18)
-        plt.imshow(input_img_resized)
-        plt.show()
+        # input_img_resized = ImageOps.fit(input_img, (224, 224), Image.LANCZOS)
+        # plt.figure(figsize=(5, 5))
+        # plt.axis('off')
+        # plt.title('Input Image', fontsize=18)
+        # plt.imshow(input_img_resized)
+        # plt.show()
 
-        st.write(image_path)
+        #st.write(image_path)
 
         with st.sidebar:
             # Display an image
@@ -158,18 +158,18 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
         #st.write(img_list)
     
-        # grid_size = math.ceil(math.sqrt(number_of_images))
-        # axes = []
-        # fig = plt.figure(figsize=(20, 15))
-        # for a in range(number_of_images):
-        #     axes.append(fig.add_subplot(grid_size, grid_size, a + 1))
-        #     plt.axis('off')
-        #     img = Image.open(img_list[a])
-        #     img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
-        #     plt.imshow(img_resized)
-        # fig.tight_layout()
-        # fig.subplots_adjust(top=0.93)
-        # fig.suptitle('Similar Result Found', fontsize=22)
+        grid_size = math.ceil(math.sqrt(number_of_images))
+        axes = []
+        fig = plt.figure(figsize=(20, 15))
+        for a in range(number_of_images):
+            axes.append(fig.add_subplot(grid_size, grid_size, a + 1))
+            plt.axis('off')
+            img = Image.open(img_list[a])
+            img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
+            plt.imshow(img_resized)
+        fig.tight_layout()
+        fig.subplots_adjust(top=0.93)
+        fig.suptitle('Similar Result Found', fontsize=22)
 
 
 #st.write(str(images_recs))
