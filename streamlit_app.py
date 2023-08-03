@@ -1,5 +1,5 @@
 # © Stats AI LLC 2023. All Rights Reserved. 
-# No part of this code may be used or reprodued without express permission.
+# No part of this code may be used or reproduced without express permission.
 
 import streamlit as st
 import DeepImageSearch.config as config
