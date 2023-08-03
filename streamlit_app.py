@@ -41,7 +41,7 @@ if __name__ == "__main__":
     url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/faiss_assets.zip"
     download_and_unzip(url)
 
-@st.cache_resource
+#@st.cache_resource
 def _load_assets():
 	# Load images from a folder
 	image_list = Load_Data().from_folder(['animals'])
