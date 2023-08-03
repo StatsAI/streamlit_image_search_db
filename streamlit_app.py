@@ -202,66 +202,105 @@ def _search_by_vector(v, n: int):
         #return image_paths
 
 #@st.cache_resource
+# def plot_similar_images_new(image_path: str, number_of_images: int = 6):
+#         """
+#         Plots a given image and its most similar images according to the indexed image features.
+
+#         Parameters:
+#         -----------
+#         image_path : str
+#             The path to the query image to be plotted.
+#         number_of_images : int, optional (default=6)
+#             The number of most similar images to the query image to be plotted.
+#         """
+#         input_img = Image.open(image_path)
+
+#         #st.write(image_path)
+    
+#         # input_img_resized = ImageOps.fit(input_img, (224, 224), Image.LANCZOS)
+#         # plt.figure(figsize=(5, 5))
+#         # plt.axis('off')
+#         # plt.title('Input Image', fontsize=18)
+#         # plt.imshow(input_img_resized)
+#         # plt.show()
+
+#         #st.write(image_path)
+
+#         with st.sidebar:
+#             # Display an image
+#             st.image(image_path)
+
+
+#         query_vector = _get_query_vector(image_path)
+#         img_list = list(_search_by_vector(query_vector, number_of_images).values())
+
+#         img_list = [path.replace('drive/MyDrive/archive/', '') for path in img_list] #Image Path
+
+#         img_list.append(image_path)
+
+#         img_list = list(set(img_list))
+
+#         number_of_images = 16
+
+
+#         #st.write(img_list)
+    
+#         grid_size = math.ceil(math.sqrt(number_of_images))
+#         axes = []
+#         fig = plt.figure(figsize=(20, 15))
+#         for a in range(number_of_images):
+#             axes.append(fig.add_subplot(grid_size, grid_size, a + 1))
+#             plt.axis('off')
+#             img = Image.open(img_list[a])
+#             img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
+#             plt.imshow(img_resized)
+#         fig.tight_layout()
+#         fig.subplots_adjust(top=0.93)
+#         fig.suptitle('Similar Result Found', fontsize=22)
+
+
+# #st.write(str(images_recs))
+
+# #st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
+####################################################################################################################################################
+
 def plot_similar_images_new(image_path: str, number_of_images: int = 6):
-        """
-        Plots a given image and its most similar images according to the indexed image features.
+    """
+    Plots a given image and its most similar images according to the indexed image features.
 
-        Parameters:
-        -----------
-        image_path : str
-            The path to the query image to be plotted.
-        number_of_images : int, optional (default=6)
-            The number of most similar images to the query image to be plotted.
-        """
-        input_img = Image.open(image_path)
+    Parameters:
+    -----------
+    image_path : str
+        The path to the query image to be plotted.
+    number_of_images : int, optional (default=6)
+        The number of most similar images to the query image to be plotted.
+    """
+    input_img = Image.open(image_path)
 
-        #st.write(image_path)
-    
-        # input_img_resized = ImageOps.fit(input_img, (224, 224), Image.LANCZOS)
-        # plt.figure(figsize=(5, 5))
-        # plt.axis('off')
-        # plt.title('Input Image', fontsize=18)
-        # plt.imshow(input_img_resized)
-        # plt.show()
+    # Display the input image on the sidebar
+    with st.sidebar:
+        st.image(input_img)
 
-        #st.write(image_path)
+    query_vector = _get_query_vector(image_path)
+    img_list = list(_search_by_vector(query_vector, number_of_images).values())
 
-        with st.sidebar:
-            # Display an image
-            st.image(image_path)
+    img_list = [path.replace('drive/MyDrive/archive/', '') for path in img_list] #Image Path
 
+    img_list.append(image_path)
 
-        query_vector = _get_query_vector(image_path)
-        img_list = list(_search_by_vector(query_vector, number_of_images).values())
+    img_list = list(set(img_list))
 
-        img_list = [path.replace('drive/MyDrive/archive/', '') for path in img_list] #Image Path
+    number_of_images = 16
 
-        img_list.append(image_path)
+    grid_size = math.ceil(math.sqrt(number_of_images))
 
-        img_list = list(set(img_list))
-
-        number_of_images = 16
+    # Display the similar images using Streamlit's st.image function
+    for a in range(number_of_images):
+        img = Image.open(img_list[a])
+        img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
+        st.image(img_resized, caption=f"Similar Image {a+1}", use_column_width=True)
 
 
-        #st.write(img_list)
-    
-        grid_size = math.ceil(math.sqrt(number_of_images))
-        axes = []
-        fig = plt.figure(figsize=(20, 15))
-        for a in range(number_of_images):
-            axes.append(fig.add_subplot(grid_size, grid_size, a + 1))
-            plt.axis('off')
-            img = Image.open(img_list[a])
-            img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
-            plt.imshow(img_resized)
-        fig.tight_layout()
-        fig.subplots_adjust(top=0.93)
-        fig.suptitle('Similar Result Found', fontsize=22)
-
-
-#st.write(str(images_recs))
-
-#st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
 
 ####################################################################################################################################################
 
@@ -270,17 +309,21 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 #if "load_state" not in st.session_state:
 #	st.session_state.load_state = False
 
-if "results" not in st.session_state:
-	st.session_state.results = None
+#if "results" not in st.session_state:
+#	st.session_state.results = None
 
 #st.sidebar.write('Instructions: Click on the button to find similar images.')
 
 #st.sidebar.button('Generate Candidates', key = "1")
 
-if st.sidebar.button('Get Similar Images'):
+# if st.sidebar.button('Get Similar Images'):
 	
-	#candidate_predictions = retrieval_predict(num_recs, user_id)
-	st.session_state.results = st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
+# 	#candidate_predictions = retrieval_predict(num_recs, user_id)
+# 	st.session_state.results = st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
+
+if st.sidebar.button('Get Similar Images'):
+    plot_similar_images_new(image_path=image_list[images_recs], number_of_images=20)
+
 	
 
 ####################################################################################################################################################	
