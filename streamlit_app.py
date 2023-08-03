@@ -40,34 +40,44 @@ def _load_assets():
     # Load images from a folder
     image_list = Load_Data().from_folder(['animals'])
 
-
     if "image_list" not in st.session_state:
         st.session_state.image_list = None
 
     st.session_state.image_list = image_list
+
 
     # Load indexed images
     loaded_index = faiss.read_index("image_features_vectors.idx")
 
+    if "loaded_index" not in st.session_state:
+        st.session_state.loaded_index = None
+
+    st.session_state.loaded_index = loaded_index
+	
+
     # Load image features
     image_data = pd.read_pickle("image_data_features.pkl")
 
+    if "image_data" not in st.session_state:
+        st.session_state.image_data = None
+
+    st.session_state.image_data = image_data	
 
     return image_list, loaded_index, image_data
 
 
 
-@st.cache_data(persist="disk")
-def _load_assets():
-    # Load images from a folder
-    image_list = Load_Data().from_folder(['animals'])
+# @st.cache_data(persist="disk")
+# def _load_assets():
+#     # Load images from a folder
+#     image_list = Load_Data().from_folder(['animals'])
 
-    if "image_list" not in st.session_state:
-        st.session_state.image_list = None
+#     if "image_list" not in st.session_state:
+#         st.session_state.image_list = None
 
-    st.session_state.image_list = image_list
+#     st.session_state.image_list = image_list
 
-    return image_list, loaded_index, image_data
+#     return image_list, loaded_index, image_data
 
 
 
