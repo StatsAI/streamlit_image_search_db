@@ -42,28 +42,29 @@ if __name__ == "__main__":
     download_and_unzip(url)
 
 
-# Load images from a folder
-image_list = Load_Data().from_folder(['animals'])
+# # Load images from a folder
+# image_list = Load_Data().from_folder(['animals'])
 	
-# Load indexed images
-loaded_index = faiss.read_index("image_features_vectors.idx")
+# # Load indexed images
+# loaded_index = faiss.read_index("image_features_vectors.idx")
 
-# Load image features
-image_data = pd.read_pickle("image_data_features.pkl")
+# # Load image features
+# image_data = pd.read_pickle("image_data_features.pkl")
 
 
-#@st.cache_resource
-# def _load_assets():
-# 	# Load images from a folder
-# 	image_list = Load_Data().from_folder(['animals'])
+def _load_assets():
+	# Load images from a folder
+	image_list = Load_Data().from_folder(['animals'])
 	
-# 	# Load indexed images
-# 	loaded_index = faiss.read_index("image_features_vectors.idx")
+	# Load indexed images
+	loaded_index = faiss.read_index("image_features_vectors.idx")
 
-# 	# Load image features
-# 	image_data = pd.read_pickle("image_data_features.pkl")
+	# Load image features
+	image_data = pd.read_pickle("image_data_features.pkl")
 
-# _load_assets()
+_load_assets()
+
+
 ####################################################################################################################################################
 
 st.title('Image Recommendation App')
