@@ -45,28 +45,28 @@ if __name__ == "__main__":
 	loaded_index = faiss.read_index("image_features_vectors.idx")
 	image_data = pd.read_pickle("image_data_features.pkl")
 
-def _load_assets():
-    # Load images from a folder
-    image_list = Load_Data().from_folder(['animals'])
+# def _load_assets():
+#     # Load images from a folder
+#     image_list = Load_Data().from_folder(['animals'])
 
-    # Load indexed images
-    loaded_index = faiss.read_index("image_features_vectors.idx")
+#     # Load indexed images
+#     loaded_index = faiss.read_index("image_features_vectors.idx")
 
-    # Load image features
-    image_data = pd.read_pickle("image_data_features.pkl")
+#     # Load image features
+#     image_data = pd.read_pickle("image_data_features.pkl")
 
-    return image_list, loaded_index, image_data
-
-
-if "data" not in st.session_state:
-    st.session_state.data = _load_assets()
+#     return image_list, loaded_index, image_data
 
 
-# Set up the search engine
-s = Search_Setup(image_list=st.session_state.data[0],
-                 model_name='vgg19',
-                 pretrained=True,
-                 image_count=None)
+# if "data" not in st.session_state:
+#     st.session_state.data = _load_assets()
+
+
+# # Set up the search engine
+# s = Search_Setup(image_list=st.session_state.data[0],
+#                  model_name='vgg19',
+#                  pretrained=True,
+#                  image_count=None)
 
 
 # @st.cache_data(persist="disk")
@@ -115,7 +115,7 @@ images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
 ####################################################################################################################################################
 
 # Set up the search engine
-#s = Search_Setup(image_list=image_list,model_name='vgg19',pretrained=True,image_count= None)
+s = Search_Setup(image_list=image_list,model_name='vgg19',pretrained=True,image_count= None)
 
 def _extract(img):
         # Resize and convert the image
