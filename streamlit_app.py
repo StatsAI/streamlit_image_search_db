@@ -52,6 +52,7 @@ def load_assets():
 	# Load image features
 	image_data = pd.read_pickle("image_data_features.pkl")
 
+load_assets()
 ####################################################################################################################################################
 
 st.title('Image Recommendation App')
