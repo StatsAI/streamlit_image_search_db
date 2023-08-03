@@ -1,4 +1,4 @@
-import streamlit as s
+import streamlit as st
 import DeepImageSearch.config as config
 from DeepImageSearch import Load_Data, Search_Setup
 import requests
@@ -28,9 +28,9 @@ image_list = Load_Data().from_folder(['animals'])
 
 ####################################################################################################################################################
 
-s.title('Image Recommendation App')
+st.title('Image Recommendation App')
 
-s.write('This is a web app to demo reverse image search using the FAISS library.')
+st.write('This is a web app to demo reverse image search using the FAISS library.')
 
 #s.write('It uses the following two-model approach, as outlined by: [Tensorflow Recommenders](https://www.tensorflow.org/recommenders/examples/basic_retrieval)')         
 
