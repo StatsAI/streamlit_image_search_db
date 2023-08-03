@@ -34,12 +34,12 @@ def download_and_unzip(url):
     with zipfile.ZipFile("archive.zip", "r") as zip_ref:
         zip_ref.extractall()
 
-if __name__ == "__main__":
-    url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/archive.zip"
-    download_and_unzip(url)
+#if __name__ == "__main__":
+url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/archive.zip"
+download_and_unzip(url)
     
-    url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/faiss_assets.zip"
-    download_and_unzip(url)
+url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/faiss_assets.zip"
+download_and_unzip(url)
 
 
 # Load images from a folder
