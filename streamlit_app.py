@@ -43,32 +43,33 @@ if __name__ == "__main__":
 
 
 # Load images from a folder
-@st.cache_data(persist="disk")
-image_list = Load_Data().from_folder(['animals'])
+#@st.cache_data(persist="disk")
+#image_list = Load_Data().from_folder(['animals'])
 	
 # Load indexed images
-@st.cache_data(persist="disk")
-loaded_index = faiss.read_index("image_features_vectors.idx")
+#@st.cache_data(persist="disk")
+#loaded_index = faiss.read_index("image_features_vectors.idx")
 
 # Load image features
+#@st.cache_data(persist="disk")
+#image_data = pd.read_pickle("image_data_features.pkl")
+
 @st.cache_data(persist="disk")
-image_data = pd.read_pickle("image_data_features.pkl")
-
-# def _load_assets():
-# 	# Load images from a folder
-# 	image_list = Load_Data().from_folder(['animals'])
+def _load_assets():
+	# Load images from a folder
+	image_list = Load_Data().from_folder(['animals'])
 	
-# 	# Load indexed images
-# 	loaded_index = faiss.read_index("image_features_vectors.idx")
+	# Load indexed images
+	loaded_index = faiss.read_index("image_features_vectors.idx")
 
-# 	# Load image features
-# 	image_data = pd.read_pickle("image_data_features.pkl")
+	# Load image features
+	image_data = pd.read_pickle("image_data_features.pkl")
 
 
-# if "data" not in st.session_state:
-# 	st.session_state.data = None
+if "data" not in st.session_state:
+	st.session_state.data = None
 
-# st.session_state.data = _load_assets()
+st.session_state.data = _load_assets()
 
 
 ####################################################################################################################################################
@@ -89,8 +90,10 @@ st.write('This is a web app to demo reverse image search using the FAISS library
 
 st.sidebar.write('Instructions: Use the below controls to select the Image you want to find similar images of') 
 
+image_list_len = len(image_list)
+
 images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
-                          max_value = len(image_list) ,
+                          max_value = image_list_len,
                           value = 150,
                           step = 1)
 
