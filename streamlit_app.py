@@ -146,7 +146,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
         plt.show(fig)
 
 
-st.write(image_recs)
+st.write(str(image_recs))
 
 #st.pyplot(plot_similar_images_new(image_path = images_recs, number_of_images=16))
 
