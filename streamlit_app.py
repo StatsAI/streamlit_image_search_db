@@ -90,7 +90,7 @@ st.write('This is a web app to demo reverse image search using the FAISS library
 
 st.sidebar.write('Instructions: Use the below controls to select the Image you want to find similar images of') 
 
-image_list_len = len(image_list)
+#image_list_len = len(image_list)
 
 images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
                           max_value = 5400,
