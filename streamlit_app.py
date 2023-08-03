@@ -32,7 +32,7 @@ if __name__ == "__main__":
     url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/archive.zip"
     download_and_unzip(url)
     
-    url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/FAISS.Assets.rar"
+    url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/faiss_assets.zip"
     download_and_unzip(url)
 
 ####################################################################################################################################################
