@@ -188,3 +188,26 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
 st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
 
+####################################################################################################################################################
+
+# Initialize session state
+
+#if "load_state" not in st.session_state:
+#	st.session_state.load_state = False
+
+if "results" not in st.session_state:
+	st.session_state.results = None
+
+st.sidebar.write('Instructions: Click on the button to find similar images.')
+
+#st.sidebar.button('Generate Candidates', key = "1")
+
+if st.sidebar.button('Get Similar Images'):
+	
+	#candidate_predictions = retrieval_predict(num_recs, user_id)
+	st.session_state.results = st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
+	
+
+####################################################################################################################################################	
+
+
