@@ -1,3 +1,5 @@
+# © Stats AI LLC 2023. No part of this code may be used or reprodued without express permission
+
 import streamlit as st
 import DeepImageSearch.config as config
 from DeepImageSearch import Load_Data, Search_Setup
