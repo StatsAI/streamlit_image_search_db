@@ -17,7 +17,6 @@ from PIL import ImageOps
 import math
 import faiss
 
-
 ####################################################################################################################################################
 # Download and unzip images
 
@@ -42,7 +41,7 @@ image_list = Load_Data().from_folder(['animals'])
 loaded_index = faiss.read_index("https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/image_features_vectors.idx")
 
 # Load image features
-image_data = pd.read_pickle("https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/image_data_features.pkl")
+#image_data = pd.read_pickle("https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/image_data_features.pkl")
 
 ####################################################################################################################################################
 
