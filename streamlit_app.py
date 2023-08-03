@@ -135,7 +135,8 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
         """
         input_img = Image.open(image_path)
 
-        st.write(image_path)
+        #st.write(image_path)
+    
         input_img_resized = ImageOps.fit(input_img, (224, 224), Image.LANCZOS)
         plt.figure(figsize=(5, 5))
         plt.axis('off')
@@ -148,7 +149,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
         img_list = [path.replace('drive/MyDrive/archive/', '') for path in img_list] #Image Path
 
-        st.write(img_list)
+        #st.write(img_list)
 
         # grid_size = math.ceil(math.sqrt(number_of_images))
         # axes = []
