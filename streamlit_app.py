@@ -221,7 +221,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 if "results" not in st.session_state:
 	st.session_state.results = None
 
-st.sidebar.write('Instructions: Click on the button to find similar images.')
+#st.sidebar.write('Instructions: Click on the button to find similar images.')
 
 #st.sidebar.button('Generate Candidates', key = "1")
 
