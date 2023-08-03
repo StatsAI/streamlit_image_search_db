@@ -116,7 +116,7 @@ def _search_by_vector(v, n: int):
         D, I = loaded_index.search(np.array([v], dtype=np.float32), n) #Image Path
         image_paths = [os.path.abspath(path) for path in image_data.iloc[I[0]]['images_paths'].to_list()] #Image Path
         #image_paths = [path.replace('/ImageSearch/drive/MyDrive/', '/') for path in image_paths] #Image Path
-        image_paths = [path.replace('drive/MyDrive/archive/animals/, '/') for path in image_paths] #Image Path
+        image_paths = [path.replace('drive/MyDrive/archive/animals/', '/') for path in image_paths] #Image Path
 
         return dict(zip(I[0], image_data.iloc[I[0]]['images_paths'].to_list()))
         #return image_paths
