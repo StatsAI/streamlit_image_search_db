@@ -42,6 +42,10 @@ url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image
 download_and_unzip(url)
 
 
+image_list = Load_Data().from_folder(['animals'])
+loaded_index = faiss.read_index("image_features_vectors.idx")
+image_data = pd.read_pickle("image_data_features.pkl")
+
 def _load_assets():
     # Load images from a folder
     image_list = Load_Data().from_folder(['animals'])
