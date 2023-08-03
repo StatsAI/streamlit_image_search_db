@@ -34,7 +34,6 @@ def download_and_unzip(url):
     with zipfile.ZipFile("archive.zip", "r") as zip_ref:
         zip_ref.extractall()
 
-@st.cache_resource
 if __name__ == "__main__":
     url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/archive.zip"
     download_and_unzip(url)
