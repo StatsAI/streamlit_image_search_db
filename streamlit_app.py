@@ -87,9 +87,15 @@ if __name__ == "__main__":
     
 	url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/faiss_assets.zip"
 	download_and_unzip(url)
+
+	time.sleep(3)
 	
 	image_list = Load_Data().from_folder(['animals'])
+
+	time.sleep(3)
 	loaded_index = faiss.read_index("image_features_vectors.idx")
+	
+	time.sleep(3)
 	image_data = pd.read_pickle("image_data_features.pkl")
 
 	#_load_assets()
