@@ -181,7 +181,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
             plt.imshow(img_resized)
         fig.tight_layout()
         fig.subplots_adjust(top=0.93)
-        fig.suptitle('Similar Result Found', fontsize=22)
+        #fig.suptitle('Similar Result Found', fontsize=22)
 
 
 ####################################################################################################################################################
