@@ -74,7 +74,7 @@ st.markdown(
             margin-left: auto;
             margin-right: auto;
             width: 100%;
-	    padding-top: 1rem;
+	    padding-top: 0.5rem;
         }
     </style>
     """, unsafe_allow_html=True
