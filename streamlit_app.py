@@ -27,6 +27,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 # Download and unzip images
 
 #@st.cache_data(persist="disk")
+@st.cache_resource
 def download_and_unzip(url):
     response = requests.get(url)
     with open("archive.zip", "wb") as f:
@@ -59,7 +60,8 @@ if __name__ == "__main__":
 # time.sleep(1)
 
 
-@st.cache_data(persist="disk")
+#@st.cache_data(persist="disk")
+@st.cache_resource
 def load_assets():
 	# Load images from a folder
 	image_list = Load_Data().from_folder(['animals'])
