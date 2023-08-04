@@ -62,7 +62,8 @@ image_list, loaded_index, image_data = load_assets()
 ####################################################################################################################################################
 
 logo = Image.open('images/picture.png')
-logo = logo.resize(75,75)
+newsize = (75, 75)
+logo = logo.resize(newsize)
 
 st.markdown(
     """
