@@ -66,12 +66,12 @@ def load_assets():
 	# Load images from a folder
 	image_list = Load_Data().from_folder(['animals'])
 
-	time.sleep(1)
+	#time.sleep(1)
 	
 	# Load indexed images
 	loaded_index = faiss.read_index("image_features_vectors.idx")
 
-	time.sleep(1)
+	#time.sleep(1)
 
 	# Load image features
 	image_data = pd.read_pickle("image_data_features.pkl")
