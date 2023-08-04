@@ -239,7 +239,10 @@ if st.sidebar.button('Get Similar Images'):
 	
 	#candidate_predictions = retrieval_predict(num_recs, user_id)
 	#st.session_state.results = st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
-	st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
+
+	#fig, ax = plt.subplots()
+	#st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
+	plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20)
 	
 
 ####################################################################################################################################################	
