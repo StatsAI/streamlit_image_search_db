@@ -82,6 +82,18 @@ st.markdown(
 with st.sidebar:
     st.image(logo)
 
+
+st.markdown("""
+        <style>
+               .block-container {
+                    padding-top: 1rem;
+                    padding-bottom: 0rem;
+                    padding-left: 5rem;
+                    padding-right: 5rem;
+                }
+        </style>
+        """, unsafe_allow_html=True)
+
 st.title('Image Recommendation App')
 
 st.write('This is a web app to demo reverse image search using the FAISS library.')
