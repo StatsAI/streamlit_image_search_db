@@ -92,6 +92,8 @@ st.markdown("""
         </style>
         """, unsafe_allow_html=True)
 
+st.write('')
+
 st.title('Image Recommendation App')
 
 st.write('This is a web app to demo reverse image search using the FAISS library.')
