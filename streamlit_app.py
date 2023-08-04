@@ -34,83 +34,25 @@ def download_and_unzip(url):
     with zipfile.ZipFile("archive.zip", "r") as zip_ref:
         zip_ref.extractall()
 
-
-# @st.cache_data(persist="disk")
-# def _load_assets():
-#     # Load images from a folder
-#     image_list = Load_Data().from_folder(['animals'])
-
-#     if "image_list" not in st.session_state:
-#         st.session_state.image_list = None
-
-#     st.session_state.image_list = image_list
-
-
-#     # Load indexed images
-#     loaded_index = faiss.read_index("image_features_vectors.idx")
-
-#     if "loaded_index" not in st.session_state:
-#         st.session_state.loaded_index = None
-
-#     st.session_state.loaded_index = loaded_index
-	
-
-#     # Load image features
-#     image_data = pd.read_pickle("image_data_features.pkl")
-
-#     if "image_data" not in st.session_state:
-#         st.session_state.image_data = None
-
-#     st.session_state.image_data = image_data	
-
-#     return image_list, loaded_index, image_data
-
-
-
-# @st.cache_data(persist="disk")
-# def _load_assets():
-#     # Load images from a folder
-#     image_list = Load_Data().from_folder(['animals'])
-
-#     if "image_list" not in st.session_state:
-#         st.session_state.image_list = None
-
-#     st.session_state.image_list = image_list
-
-#     return image_list, loaded_index, image_data
-
-
-
-if __name__ == "__main__":
-	url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/archive.zip"
-	download_and_unzip(url)
+#if __name__ == "__main__":
+url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/archive.zip"
+download_and_unzip(url)
     
-	url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/faiss_assets.zip"
-	download_and_unzip(url)
+url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/faiss_assets.zip"
+download_and_unzip(url)
 
-	time.sleep(3)
+
+# Load images from a folder
+#@st.cache_data(persist="disk")
+image_list = Load_Data().from_folder(['animals'])
 	
-	image_list = Load_Data().from_folder(['animals'])
+# Load indexed images
+#@st.cache_data(persist="disk")
+loaded_index = faiss.read_index("image_features_vectors.idx")
 
-	time.sleep(3)
-	loaded_index = faiss.read_index("image_features_vectors.idx")
-	
-	time.sleep(3)
-	image_data = pd.read_pickle("image_data_features.pkl")
-
-	#_load_assets()
-
-
-# if "data" not in st.session_state:
-#     st.session_state.data = _load_assets()
-
-
-# # Set up the search engine
-# s = Search_Setup(image_list=st.session_state.data[0],
-#                  model_name='vgg19',
-#                  pretrained=True,
-#                  image_count=None)
-
+# Load image features
+#@st.cache_data(persist="disk")
+image_data = pd.read_pickle("image_data_features.pkl")
 
 # @st.cache_data(persist="disk")
 # def _load_assets():
@@ -152,7 +94,7 @@ st.sidebar.write('Instructions: Use the below controls to select the Image you w
 
 images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
                           max_value = 5400,
-                          value = 350,
+                          value = 150,
                           step = 1)
 
 ####################################################################################################################################################
@@ -265,48 +207,9 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
         fig.suptitle('Similar Result Found', fontsize=22)
 
 
-# #st.write(str(images_recs))
+#st.write(str(images_recs))
 
-# #st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
-####################################################################################################################################################
-
-# def plot_similar_images_new(image_path: str, number_of_images: int = 6):
-#     """
-#     Plots a given image and its most similar images according to the indexed image features.
-
-#     Parameters:
-#     -----------
-#     image_path : str
-#         The path to the query image to be plotted.
-#     number_of_images : int, optional (default=6)
-#         The number of most similar images to the query image to be plotted.
-#     """
-#     input_img = Image.open(image_path)
-
-#     # Display the input image on the sidebar
-#     with st.sidebar:
-#         st.image(input_img)
-
-#     query_vector = _get_query_vector(image_path)
-#     img_list = list(_search_by_vector(query_vector, number_of_images).values())
-
-#     img_list = [path.replace('drive/MyDrive/archive/', '') for path in img_list] #Image Path
-
-#     img_list.append(image_path)
-
-#     img_list = list(set(img_list))
-
-#     number_of_images = 16
-
-#     grid_size = math.ceil(math.sqrt(number_of_images))
-
-#     # Display the similar images using Streamlit's st.image function
-#     for a in range(number_of_images):
-#         img = Image.open(img_list[a])
-#         img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
-#         st.image(img_resized, caption=f"Similar Image {a+1}", use_column_width=True)
-
-
+#st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
 
 ####################################################################################################################################################
 
@@ -315,21 +218,17 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 #if "load_state" not in st.session_state:
 #	st.session_state.load_state = False
 
-#if "results" not in st.session_state:
-#	st.session_state.results = None
+if "results" not in st.session_state:
+	st.session_state.results = None
 
 #st.sidebar.write('Instructions: Click on the button to find similar images.')
 
 #st.sidebar.button('Generate Candidates', key = "1")
 
-# if st.sidebar.button('Get Similar Images'):
-	
-# 	#candidate_predictions = retrieval_predict(num_recs, user_id)
-# 	st.session_state.results = st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
-
 if st.sidebar.button('Get Similar Images'):
-    plot_similar_images_new(image_path=image_list[images_recs], number_of_images=20)
-
+	
+	#candidate_predictions = retrieval_predict(num_recs, user_id)
+	st.session_state.results = st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
 	
 
 ####################################################################################################################################################	
