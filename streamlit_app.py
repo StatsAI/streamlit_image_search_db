@@ -24,9 +24,8 @@ import time
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 ####################################################################################################################################################
-# Download and unzip images
 
-#@st.cache_data(persist="disk")
+# Download and unzip images
 @st.cache_resource
 def download_and_unzip(url):
     response = requests.get(url)
@@ -43,35 +42,26 @@ if __name__ == "__main__":
 	url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/faiss_assets.zip"
 	download_and_unzip(url)
 
-
-#@st.cache_data(persist="disk")
+# Load Pre-trained FAISS Assets
 @st.cache_resource
 def load_assets():
 	# Load images from a folder
 	image_list = Load_Data().from_folder(['animals'])
 
-	#time.sleep(1)
-	
 	# Load indexed images
 	loaded_index = faiss.read_index("image_features_vectors.idx")
 
-	#time.sleep(1)
-
 	# Load image features
 	image_data = pd.read_pickle("image_data_features.pkl")
-
-	#time.sleep(1)
 
 	return image_list, loaded_index, image_data
 
 
 image_list, loaded_index, image_data = load_assets()
 
-
 ####################################################################################################################################################
 
-logo = Image.open('images/picture_50.png')
-#st.sidebar.image(logo)
+logo = Image.open('images/picture.png')
 
 st.markdown(
     """
@@ -88,7 +78,6 @@ st.markdown(
 )
 
 with st.sidebar:
-    "# Center an image in the sidebar"
     st.image(logo)
 
 st.title('Image Recommendation App')
