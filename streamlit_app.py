@@ -21,7 +21,7 @@ import math
 import faiss
 import time
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
+#st.set_option('deprecation.showPyplotGlobalUse', False)
 
 ####################################################################################################################################################
 # Download and unzip images
@@ -241,8 +241,8 @@ if st.sidebar.button('Get Similar Images'):
 	#st.session_state.results = st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
 
 	#fig, ax = plt.subplots()
-	#st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
-	plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20)
+	st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
+	#plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20)
 	
 
 ####################################################################################################################################################	
