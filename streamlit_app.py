@@ -71,7 +71,25 @@ image_list, loaded_index, image_data = load_assets()
 ####################################################################################################################################################
 
 logo = Image.open('images/picture_50.png')
-st.sidebar.image(logo)
+#st.sidebar.image(logo)
+
+st.markdown(
+    """
+    <style>
+        [data-testid=stSidebar] [data-testid=stImage]{
+            text-align: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+    </style>
+    """, unsafe_allow_html=True
+)
+
+with st.sidebar:
+    "# Center an image in the sidebar"
+    st.image(logo)
 
 st.title('Image Recommendation App')
 
