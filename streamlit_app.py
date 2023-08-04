@@ -104,7 +104,13 @@ images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
 ####################################################################################################################################################
 
 # Set up the search engine
-s = Search_Setup(image_list=image_list,model_name='vgg19',pretrained=True,image_count= None)
+
+@st.cache_resource
+def load_model():
+    model = Search_Setup(image_list=image_list,model_name='vgg19',pretrained=True,image_count= None)
+    return model
+
+s = load_model()
 
 def _extract(img):
         # Resize and convert the image
