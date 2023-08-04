@@ -70,6 +70,9 @@ image_list, loaded_index, image_data = load_assets()
 
 ####################################################################################################################################################
 
+logo = Image.open('images/picture.png')
+st.image(logo)
+
 st.title('Image Recommendation App')
 
 st.write('This is a web app to demo reverse image search using the FAISS library.')
@@ -83,10 +86,6 @@ st.write('This is a web app to demo reverse image search using the FAISS library
 #displaying the image on streamlit app
 
 #st.image(image)
-
-logo = Image.open('images/picture.png')
-
-st.image(logo)
 
 # with st.sidebar:
 # 	# Display an image
