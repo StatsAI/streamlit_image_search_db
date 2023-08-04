@@ -105,8 +105,8 @@ images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
 image_path = image_list[images_recs]
 
  with st.sidebar:
-            # Display an image
-            st.image(image_path)
+	 # Display an image
+         st.image(image_path)
 
 ####################################################################################################################################################
 
