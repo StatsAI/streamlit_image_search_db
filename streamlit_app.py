@@ -62,6 +62,7 @@ image_list, loaded_index, image_data = load_assets()
 ####################################################################################################################################################
 
 logo = Image.open('images/picture.png')
+logo = logo.resize(75,75)
 
 st.markdown(
     """
@@ -78,7 +79,7 @@ st.markdown(
 )
 
 with st.sidebar:
-    st.image(logo).resize(75,75)
+    st.image(logo)
 
 st.title('Image Recommendation App')
 
