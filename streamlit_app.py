@@ -87,7 +87,7 @@ with st.sidebar:
 st.markdown("""
         <style>
                .block-container {
-                    padding-top: 4rem;
+		    padding-top: 0;
                 }
         </style>
         """, unsafe_allow_html=True)
