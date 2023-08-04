@@ -35,35 +35,35 @@ def download_and_unzip(url):
         zip_ref.extractall()
 
 
-@st.cache_data(persist="disk")
-def _load_assets():
-    # Load images from a folder
-    image_list = Load_Data().from_folder(['animals'])
+# @st.cache_data(persist="disk")
+# def _load_assets():
+#     # Load images from a folder
+#     image_list = Load_Data().from_folder(['animals'])
 
-    if "image_list" not in st.session_state:
-        st.session_state.image_list = None
+#     if "image_list" not in st.session_state:
+#         st.session_state.image_list = None
 
-    st.session_state.image_list = image_list
+#     st.session_state.image_list = image_list
 
 
-    # Load indexed images
-    loaded_index = faiss.read_index("image_features_vectors.idx")
+#     # Load indexed images
+#     loaded_index = faiss.read_index("image_features_vectors.idx")
 
-    if "loaded_index" not in st.session_state:
-        st.session_state.loaded_index = None
+#     if "loaded_index" not in st.session_state:
+#         st.session_state.loaded_index = None
 
-    st.session_state.loaded_index = loaded_index
+#     st.session_state.loaded_index = loaded_index
 	
 
-    # Load image features
-    image_data = pd.read_pickle("image_data_features.pkl")
+#     # Load image features
+#     image_data = pd.read_pickle("image_data_features.pkl")
 
-    if "image_data" not in st.session_state:
-        st.session_state.image_data = None
+#     if "image_data" not in st.session_state:
+#         st.session_state.image_data = None
 
-    st.session_state.image_data = image_data	
+#     st.session_state.image_data = image_data	
 
-    return image_list, loaded_index, image_data
+#     return image_list, loaded_index, image_data
 
 
 
