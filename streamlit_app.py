@@ -46,17 +46,17 @@ if __name__ == "__main__":
 # Load images from a folder
 #@st.cache_data(persist="disk")
 image_list = Load_Data().from_folder(['animals'])
-timer.sleep(1)
+time.sleep(1)
 	
 # Load indexed images
 #@st.cache_data(persist="disk")
 loaded_index = faiss.read_index("image_features_vectors.idx")
-timer.sleep(1)
+time.sleep(1)
 
 # Load image features
 #@st.cache_data(persist="disk")
 image_data = pd.read_pickle("image_data_features.pkl")
-timer.sleep(1)
+time.sleep(1)
 
 # @st.cache_data(persist="disk")
 # def _load_assets():
