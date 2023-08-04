@@ -102,6 +102,8 @@ images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
                           value = 150,
                           step = 1)
 
+image_path = image_list[images_recs]
+
  with st.sidebar:
             # Display an image
             st.image(image_path)
@@ -241,7 +243,7 @@ if st.sidebar.button('Get Similar Images'):
 	#st.session_state.results = st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
 
 	#fig, ax = plt.subplots()
-	st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
+	st.pyplot(plot_similar_images_new(image_path, number_of_images = 20))
 	#plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20)
 	
 
