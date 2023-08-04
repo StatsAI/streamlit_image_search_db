@@ -222,8 +222,8 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 #if "load_state" not in st.session_state:
 #	st.session_state.load_state = False
 
-if "results" not in st.session_state:
-	st.session_state.results = None
+#if "results" not in st.session_state:
+#	st.session_state.results = None
 
 #st.sidebar.write('Instructions: Click on the button to find similar images.')
 
@@ -232,7 +232,8 @@ if "results" not in st.session_state:
 if st.sidebar.button('Get Similar Images'):
 	
 	#candidate_predictions = retrieval_predict(num_recs, user_id)
-	st.session_state.results = st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
+	#st.session_state.results = st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
+	st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
 	
 
 ####################################################################################################################################################	
