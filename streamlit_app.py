@@ -146,7 +146,7 @@ st.sidebar.write('Instructions: Use the below controls to select the Image you w
 
 images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
                           max_value = 5400,
-                          value = 150,
+                          value = 350,
                           step = 1)
 
 ####################################################################################################################################################
