@@ -73,7 +73,7 @@ def load_assets():
 	return image_list, loaded_index, image_data
 
 
-loaded_assets = load_assets()
+image_list, loaded_index, image_data = load_assets()
 
 # if "data" not in st.session_state:
 # 	st.session_state.data = None
