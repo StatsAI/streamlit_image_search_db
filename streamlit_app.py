@@ -60,7 +60,7 @@ if __name__ == "__main__":
 
 
 @st.cache_data(persist="disk")
-def _load_assets():
+def load_assets():
 	# Load images from a folder
 	image_list = Load_Data().from_folder(['animals'])
 	
@@ -70,6 +70,10 @@ def _load_assets():
 	# Load image features
 	image_data = pd.read_pickle("image_data_features.pkl")
 
+	return image_list, loaded_index, image_data
+
+
+loaded_assets = load_assets()
 
 # if "data" not in st.session_state:
 # 	st.session_state.data = None
