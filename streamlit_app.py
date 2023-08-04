@@ -93,11 +93,9 @@ st.markdown("""
         """, unsafe_allow_html=True)
 
 st.write('')
-
+st.write('')
 st.title('Image Recommendation App')
-
 st.write('This is a web app to demo reverse image search using the FAISS library.')
-
 st.sidebar.write('Instructions: Use the below controls to select the Image you want to find similar images of') 
 
 images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
