@@ -86,9 +86,11 @@ st.write('This is a web app to demo reverse image search using the FAISS library
 
 logo = Image.open('images/picture.png')
 
-with st.sidebar:
-	# Display an image
-        st.image(logo)
+st.image(logo)
+
+# with st.sidebar:
+# 	# Display an image
+#         st.image(logo)
 
 
 st.sidebar.write('Instructions: Use the below controls to select the Image you want to find similar images of') 
