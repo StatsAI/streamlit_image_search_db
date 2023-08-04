@@ -71,14 +71,14 @@ st.markdown(
             display: block;
             margin-left: auto;
             margin-right: auto;
-            width: 80%;
+            width: 100%;
         }
     </style>
     """, unsafe_allow_html=True
 )
 
 with st.sidebar:
-    st.image(logo)
+    st.image(logo).resize(75,75)
 
 st.title('Image Recommendation App')
 
