@@ -71,7 +71,7 @@ image_list, loaded_index, image_data = load_assets()
 ####################################################################################################################################################
 
 logo = Image.open('images/picture_50.png')
-st.image(logo)
+st.sidebar.image(logo)
 
 st.title('Image Recommendation App')
 
