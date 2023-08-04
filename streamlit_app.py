@@ -84,24 +84,7 @@ st.title('Image Recommendation App')
 
 st.write('This is a web app to demo reverse image search using the FAISS library.')
 
-#s.write('It uses the following two-model approach, as outlined by: [Tensorflow Recommenders](https://www.tensorflow.org/recommenders/examples/basic_retrieval)')         
-
-#opening the image
-
-#image = Image.open('images/rec_sys.PNG')
-
-#displaying the image on streamlit app
-
-#st.image(image)
-
-# with st.sidebar:
-# 	# Display an image
-#         st.image(logo)
-
-
 st.sidebar.write('Instructions: Use the below controls to select the Image you want to find similar images of') 
-
-#image_list_len = len(image_list)
 
 images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
                           max_value = 5400,
@@ -117,7 +100,6 @@ with st.sidebar:
 ####################################################################################################################################################
 
 # Set up the search engine
-
 @st.cache_resource
 def load_model():
     model = Search_Setup(image_list=image_list,model_name='vgg19',pretrained=True,image_count= None)
@@ -149,17 +131,6 @@ def _get_query_vector(image_path: str):
         query_vector = _extract(img)
         return query_vector
 
-
-# def _search_by_vector(v, n: int):
-#         #self.v = v
-#         #self.n = n
-
-#         #index = faiss.read_index(config.image_features_vectors_idx(self.model_name))
-
-#         D, I = loaded_index.search(np.array([v], dtype=np.float32), n)
-#         return dict(zip(I[0], image_data.iloc[I[0]]['images_paths'].to_list()))
-
-
 def _search_by_vector(v, n: int):
         #self.v = v
         #self.n = n
@@ -186,17 +157,6 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
         """
         input_img = Image.open(image_path)
 
-        #st.write(image_path)
-    
-        # input_img_resized = ImageOps.fit(input_img, (224, 224), Image.LANCZOS)
-        # plt.figure(figsize=(5, 5))
-        # plt.axis('off')
-        # plt.title('Input Image', fontsize=18)
-        # plt.imshow(input_img_resized)
-        # plt.show()
-
-        #st.write(image_path)
-
         query_vector = _get_query_vector(image_path)
         img_list = list(_search_by_vector(query_vector, number_of_images).values())
 
@@ -207,9 +167,6 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
         img_list = list(set(img_list))
 
         number_of_images = 16
-
-
-        #st.write(img_list)
     
         grid_size = math.ceil(math.sqrt(number_of_images))
         axes = []
@@ -225,23 +182,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
         fig.suptitle('Similar Result Found', fontsize=22)
 
 
-#st.write(str(images_recs))
-
-#st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
-
 ####################################################################################################################################################
-
-# Initialize session state
-
-#if "load_state" not in st.session_state:
-#	st.session_state.load_state = False
-
-#if "results" not in st.session_state:
-#	st.session_state.results = None
-
-#st.sidebar.write('Instructions: Click on the button to find similar images.')
-
-#st.sidebar.button('Generate Candidates', key = "1")
 
 if st.sidebar.button('Get Similar Images'):
 	
