@@ -21,7 +21,7 @@ import math
 import faiss
 import time
 
-#st.set_option('deprecation.showPyplotGlobalUse', False)
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 ####################################################################################################################################################
 # Download and unzip images
