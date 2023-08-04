@@ -25,7 +25,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 ####################################################################################################################################################
 # Download and unzip images
 
-@st.cache_data(persist="disk")
+#@st.cache_data(persist="disk")
 def download_and_unzip(url):
     response = requests.get(url)
     with open("archive.zip", "wb") as f:
@@ -201,7 +201,7 @@ def _search_by_vector(v, n: int):
         return dict(zip(I[0], image_data.iloc[I[0]]['images_paths'].to_list()))
         #return image_paths
 
-@st.cache_resource
+#@st.cache_resource
 def plot_similar_images_new(image_path: str, number_of_images: int = 6):
         """
         Plots a given image and its most similar images according to the indexed image features.
