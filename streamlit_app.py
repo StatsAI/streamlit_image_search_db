@@ -46,17 +46,18 @@ if __name__ == "__main__":
 # Load images from a folder
 #@st.cache_data(persist="disk")
 image_list = Load_Data().from_folder(['animals'])
-time.sleep(1)
+#time.sleep(1)
 	
 # Load indexed images
 #@st.cache_data(persist="disk")
 loaded_index = faiss.read_index("image_features_vectors.idx")
-time.sleep(1)
+#time.sleep(1)
 
 # Load image features
 #@st.cache_data(persist="disk")
 image_data = pd.read_pickle("image_data_features.pkl")
-time.sleep(1)
+#time.sleep(1)
+
 
 # @st.cache_data(persist="disk")
 # def _load_assets():
@@ -100,6 +101,10 @@ images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
                           max_value = 5400,
                           value = 150,
                           step = 1)
+
+ with st.sidebar:
+            # Display an image
+            st.image(image_path)
 
 ####################################################################################################################################################
 
@@ -183,11 +188,6 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
         # plt.show()
 
         #st.write(image_path)
-
-        with st.sidebar:
-            # Display an image
-            st.image(image_path)
-
 
         query_vector = _get_query_vector(image_path)
         img_list = list(_search_by_vector(query_vector, number_of_images).values())
