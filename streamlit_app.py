@@ -95,15 +95,15 @@ if __name__ == "__main__":
 	#_load_assets()
 
 
-if "data" not in st.session_state:
-    st.session_state.data = _load_assets()
+# if "data" not in st.session_state:
+#     st.session_state.data = _load_assets()
 
 
-# Set up the search engine
-s = Search_Setup(image_list=st.session_state.data[0],
-                 model_name='vgg19',
-                 pretrained=True,
-                 image_count=None)
+# # Set up the search engine
+# s = Search_Setup(image_list=st.session_state.data[0],
+#                  model_name='vgg19',
+#                  pretrained=True,
+#                  image_count=None)
 
 
 # @st.cache_data(persist="disk")
@@ -152,7 +152,7 @@ images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
 ####################################################################################################################################################
 
 # Set up the search engine
-#s = Search_Setup(image_list=image_list,model_name='vgg19',pretrained=True,image_count= None)
+s = Search_Setup(image_list=image_list,model_name='vgg19',pretrained=True,image_count= None)
 
 def _extract(img):
         # Resize and convert the image
