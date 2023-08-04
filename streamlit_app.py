@@ -44,22 +44,6 @@ if __name__ == "__main__":
 	download_and_unzip(url)
 
 
-# # Load images from a folder
-# #@st.cache_data(persist="disk")
-# image_list = Load_Data().from_folder(['animals'])
-# time.sleep(1)
-	
-# # Load indexed images
-# #@st.cache_data(persist="disk")
-# loaded_index = faiss.read_index("image_features_vectors.idx")
-# time.sleep(1)
-
-# # Load image features
-# #@st.cache_data(persist="disk")
-# image_data = pd.read_pickle("image_data_features.pkl")
-# time.sleep(1)
-
-
 #@st.cache_data(persist="disk")
 @st.cache_resource
 def load_assets():
@@ -83,11 +67,6 @@ def load_assets():
 
 image_list, loaded_index, image_data = load_assets()
 
-# if "data" not in st.session_state:
-# 	st.session_state.data = None
-
-# st.session_state.data = _load_assets()
-
 
 ####################################################################################################################################################
 
@@ -104,6 +83,10 @@ st.write('This is a web app to demo reverse image search using the FAISS library
 #displaying the image on streamlit app
 
 #st.image(image)
+
+logo = Image.open('images/picture.png')
+
+st.sidebar(st.image(logo))
 
 st.sidebar.write('Instructions: Use the below controls to select the Image you want to find similar images of') 
 
