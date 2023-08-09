@@ -127,6 +127,9 @@ with st.sidebar:
 	# Display an image
         st.image(image_path)
 
+input = st.sidebar.text_input('Animal', 'Dog')
+st.write('The current animal is', input)
+
 ####################################################################################################################################################
 
 # Set up the search engine
