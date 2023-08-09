@@ -39,7 +39,15 @@ if __name__ == "__main__":
 	url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/archive.zip"
 	download_and_unzip(url)
 
+def load_data(folder_list: list):
+    image_path = []
+	for folder in folder_list:
+		for root, dirs, files in os.walk(folder):
+			for file in files:
+				if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp')):
+					image_path.append(os.path.join(root, file))
 
+    return image_path
 
 
 # Load Pre-trained Assets
