@@ -13,5 +13,5 @@ faiss-cpu==1.7.4
 #os
 timm
 #math
-
+sentence_transformers
 
