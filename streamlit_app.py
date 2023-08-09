@@ -74,16 +74,15 @@ def load_assets():
 # Set up the search engine
 @st.cache_resource
 def load_model():
-    model = SentenceTransformer("clip-ViT-B-32")
-    return model
-
-model = load_model()
-
+	model = SentenceTransformer("clip-ViT-B-32")
+	return model
+	
 ####################################################################################################################################################
 
 url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/archive.zip"
 download_and_unzip(url)
 image_list, img_emb_loaded = load_assets()
+model = load_model()
 
 ####################################################################################################################################################
 
@@ -142,17 +141,7 @@ input = st.sidebar.text_input("Text Search: Enter an animal's name using text", 
 
 #@st.cache_resource
 def plot_similar_images_new(image_path: str, number_of_images: int = 6):
-        """
-        Plots a given image and its most similar images according to the indexed image features.
 
-        Parameters:
-        -----------
-        image_path : str
-            The path to the query image to be plotted.
-        number_of_images : int, optional (default=6)
-            The number of most similar images to the query image to be plotted.
-        """
-        
 	# Encode the text you want to return images of.
 	animal_embedding = model.encode(input)
 
