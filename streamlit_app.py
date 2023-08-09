@@ -114,7 +114,7 @@ st.write('')
 st.write('')
 st.title('Image Recommendation App')
 st.write('This is a web app to demo reverse image search using Qdrant Vector Database.')
-st.sidebar.write('Instructions: Use the below controls to select the Image you want to find similar images of') 
+st.sidebar.write('Instructions: Select an image or enter text to find similar images') 
 
 images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
                           max_value = 5400,
