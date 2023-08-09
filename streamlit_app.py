@@ -12,9 +12,12 @@ import math
 import time
 import uuid
 import requests
+import zipfile
 
+import pandas as pd
+from typing import List
 from sentence_transformers import SentenceTransformer, util
-from PIL import Image
+
 #from IPython.display import display
 import matplotlib.pyplot as plt
 from PIL import Image
