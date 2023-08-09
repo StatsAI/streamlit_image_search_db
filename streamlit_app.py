@@ -75,7 +75,7 @@ def load_assets():
 
 url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/archive.zip"
 download_and_unzip(url)
-iimage_list, img_emb_loaded = load_assets()
+image_list, img_emb_loaded = load_assets()
 
 ####################################################################################################################################################
 
@@ -113,7 +113,7 @@ st.markdown("""
 st.write('')
 st.write('')
 st.title('Image Recommendation App')
-st.write('This is a web app to demo reverse image search using the FAISS library.')
+st.write('This is a web app to demo reverse image search using Qdrant Vector Database.')
 st.sidebar.write('Instructions: Use the below controls to select the Image you want to find similar images of') 
 
 images_recs = st.sidebar.slider(label = 'Image Index', min_value = 0,
