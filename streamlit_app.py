@@ -2,18 +2,18 @@
 # No part of this code may be used or reproduced without express permission.
 
 import streamlit as st
-from tqdm import tqdm
+#from tqdm import tqdm
 import numpy as np
 from torchvision import transforms
 import torch
-from torch.autograd import Variable
+#from torch.autograd import Variable
 import math
 import time
 import uuid
 
 from sentence_transformers import SentenceTransformer, util
 from PIL import Image
-from IPython.display import display
+#from IPython.display import display
 import matplotlib.pyplot as plt
 from PIL import Image
 from PIL import ImageOps
