@@ -127,8 +127,8 @@ with st.sidebar:
 	# Display an image
         st.image(image_path)
 
-input = st.sidebar.text_input("2. Text Search: Enter animal's name using text", 'Dog')
-st.write('The current animal is', input)
+input = st.sidebar.text_input("2. Text Search: Enter animal's name using text", '')
+#st.write('The current animal is', input)
 
 ####################################################################################################################################################
 
