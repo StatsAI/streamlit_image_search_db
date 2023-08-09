@@ -28,9 +28,9 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 # Download and unzip images
 @st.cache_resource
 def download_and_unzip(url):
-	response = requests.get(url)
+    response = requests.get(url)
     with open("archive.zip", "wb") as f:
-		f.write(response.content)
+	f.write(response.content)
 
     with zipfile.ZipFile("archive.zip", "r") as zip_ref:
         zip_ref.extractall()
