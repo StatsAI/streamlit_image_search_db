@@ -113,7 +113,7 @@ st.markdown("""
 st.write('')
 st.write('')
 st.title('Image Recommendation App')
-st.write("This is a web app to demo reverse image search using OpenAI's CLIP Model + Qdrant Vector Database.")
+st.write("This is a web app to demo reverse image search using OpenAI's CLIP + Qdrant Vector Database.")
 st.sidebar.write('Use either option below to find similar images!') 
 
 images_recs = st.sidebar.slider(label = 'Image Search: Select an animal from the index', min_value = 0,
