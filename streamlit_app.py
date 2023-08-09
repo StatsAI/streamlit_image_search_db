@@ -30,10 +30,10 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 def download_and_unzip(url):
     response = requests.get(url)
     with open("archive.zip", "wb") as f:
-	f.write(response.content)
+	    f.write(response.content)
 
     with zipfile.ZipFile("archive.zip", "r") as zip_ref:
-        zip_ref.extractall()
+	    zip_ref.extractall()
 
 if __name__ == "__main__":
 	url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/archive.zip"
