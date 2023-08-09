@@ -29,11 +29,11 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 @st.cache_resource
 def download_and_unzip(url):
 	response = requests.get(url)
-    	with open("archive.zip", "wb") as f:
+    with open("archive.zip", "wb") as f:
 		f.write(response.content)
 
-    	with zipfile.ZipFile("archive.zip", "r") as zip_ref:
-        	zip_ref.extractall()
+    with zipfile.ZipFile("archive.zip", "r") as zip_ref:
+        zip_ref.extractall()
 
 if __name__ == "__main__":
 	url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/archive.zip"
@@ -56,7 +56,7 @@ def calculate_embedding(image_path: str):
 	try:
 		image = Image.open(image_path)
 	return model.encode(image).tolist()
-    	except:
+    except:
 		return None
 
 
@@ -66,7 +66,7 @@ def load_embeddings():
 		pickle_file = r.content
 
     	img_emb_loaded = pickle.loads(pickle_file)
-    	return img_emb_loaded
+    return img_emb_loaded
 
 
 # Load Pre-trained Assets
