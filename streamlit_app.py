@@ -35,10 +35,6 @@ def download_and_unzip(url):
 	with zipfile.ZipFile("archive.zip", "r") as zip_ref:
         	zip_ref.extractall()
 
-if __name__ == "__main__":
-	url = "https://github.com/StatsAI/streamlit_image_search/releases/download/image_search_assets/archive.zip"
-	download_and_unzip(url)
-
 def load_data(folder_list: list):
 	image_path = []
 	
@@ -49,23 +45,31 @@ def load_data(folder_list: list):
 					image_path.append(os.path.join(root, file))
 	return image_path
 
+def load_embeddings():
+	url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/img_emb.pkl"
+	with requests.get(url) as r:
+		pickle_file = r.content
+
+    	img_emb_loaded = pickle.loads(pickle_file)
+    	return img_emb_loaded
+
 
 # Load Pre-trained Assets
 @st.cache_resource
 def load_assets():
 	# Load images from a folder
-	image_list = Load_Data().from_folder(['animals'])
+	image_list = load_data(['animals'])
 
 	# Load indexed images
-	loaded_index = faiss.read_index("image_features_vectors.idx")
+	img_emb_loaded = load_embeddings()
 
 	# Load image features
-	image_data = pd.read_pickle("image_data_features.pkl")
+	#image_data = pd.read_pickle("image_data_features.pkl")
 
-	return image_list, loaded_index, image_data
+	return image_list, img_emb_loaded
 
 
-image_list, loaded_index, image_data = load_assets()
+iimage_list, img_emb_loaded = load_assets()
 
 ####################################################################################################################################################
 
