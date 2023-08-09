@@ -61,8 +61,6 @@ def load_embeddings():
 @st.cache_resource
 def load_assets():
 	# Load images from a folder
-	url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/archive.zip"
-	download_and_unzip(url)
 	image_list = load_data(['animals'])
 
 	# Load indexed images
@@ -70,7 +68,10 @@ def load_assets():
 
 	return image_list, img_emb_loaded
 
+####################################################################################################################################################
 
+url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/archive.zip"
+download_and_unzip(url)
 iimage_list, img_emb_loaded = load_assets()
 
 ####################################################################################################################################################
