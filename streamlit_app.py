@@ -33,10 +33,59 @@ def download_and_unzip(url):
 	with open("archive.zip", "wb") as f:
 		f.write(response.content)
 
-    	with zipfile.ZipFile("archive.zip", "r") as zip_ref:
-        	zip_ref.extractall()
+    with zipfile.ZipFile("archive.zip", "r") as zip_ref:
+        zip_ref.extractall()
+
+if __name__ == "__main__":
+	url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/archive.zip"
+	download_and_unzip(url)
 
 
+def load_data(folder_list: list):
+	image_path = []
+
+	for folder in folder_list:
+		for root, dirs, files in os.walk(folder):
+			for file in files:
+				if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp')):
+					image_path.append(os.path.join(root, file))
+
+	return image_path
+	
+
+def calculate_embedding(image_path: str):
+	try:
+		image = Image.open(image_path)
+	return model.encode(image).tolist()
+    except:
+		return None
+
+
+def load_embeddings():
+	url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/img_emb.pkl"
+	with requests.get(url) as r:
+		pickle_file = r.content
+
+    	img_emb_loaded = pickle.loads(pickle_file)
+    return img_emb_loaded
+
+
+# Load Pre-trained Assets
+@st.cache_resource
+def load_assets():
+	# Load images from a folder
+	image_list = load_data(['animals'])
+
+	# Load indexed images
+	img_emb_loaded = load_embeddings()
+
+	## Load image features
+	#image_data = pd.read_pickle("image_data_features.pkl")
+
+	return image_list, img_emb_loaded
+
+
+image_list, loaded_index, image_data = load_assets()
 
 ####################################################################################################################################################
 
