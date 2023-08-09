@@ -60,7 +60,7 @@ def load_embeddings():
 	return img_emb_loaded
 
 
-# Load Pre-trained Assets
+## Load Pre-trained Assets
 @st.cache_resource
 def load_assets():
 	# Load images from a folder
