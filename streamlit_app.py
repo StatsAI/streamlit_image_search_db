@@ -71,6 +71,14 @@ def load_assets():
 
 	return image_list, img_emb_loaded
 
+# Set up the search engine
+@st.cache_resource
+def load_model():
+    model = SentenceTransformer("clip-ViT-B-32")
+    return model
+
+model = load_model()
+
 ####################################################################################################################################################
 
 url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/archive.zip"
@@ -132,17 +140,6 @@ input = st.sidebar.text_input("Text Search: Enter an animal's name using text", 
 
 ####################################################################################################################################################
 
-# Set up the search engine
-@st.cache_resource
-def load_model():
-    model = SentenceTransformer("clip-ViT-B-32")
-    return model
-
-model = load_model()
-
-
-
-
 #@st.cache_resource
 def plot_similar_images_new(image_path: str, number_of_images: int = 6):
         """
@@ -155,31 +152,71 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
         number_of_images : int, optional (default=6)
             The number of most similar images to the query image to be plotted.
         """
-        input_img = Image.open(image_path)
+        
+	# Encode the text you want to return images of.
+	animal_embedding = model.encode(input)
 
-        query_vector = _get_query_vector(image_path)
-        img_list = list(_search_by_vector(query_vector, number_of_images).values())
+	# Convert the embeddings to tensors.
+	img_emb_loaded = torch.tensor(img_emb_loaded)
+	animal_embedding = torch.tensor(animal_embedding)
 
-        img_list = [path.replace('drive/MyDrive/archive/', '') for path in img_list] #Image Path
+	number_of_images = 16
 
-        img_list.append(image_path)
+	# Find the top 10 most similar images to the bear embedding.
+	most_similar_images = util.semantic_search(query_embeddings = animal_embedding, corpus_embeddings = img_emb_loaded, top_k = number_of_images)
 
-        img_list = list(set(img_list))
+	# Create a list to store the results.
+	results = []
 
-        number_of_images = 16
+
+	# Loop over the images in the most_similar_images variable.
+	for i in range(len(most_similar_images[0])):
+		# Get the image ID and score of the current image.
+  		image_id = most_similar_images[0][i]['corpus_id']
+  		image_score = most_similar_images[0][i]['score']
+
+  		results.append([image_id, image_score])
+
+	# input_img = Image.open(image_path)
+
+ #        query_vector = _get_query_vector(image_path)
+ #        img_list = list(_search_by_vector(query_vector, number_of_images).values())
+
+ #        img_list = [path.replace('drive/MyDrive/archive/', '') for path in img_list] #Image Path
+
+ #        img_list.append(image_path)
+
+ #        img_list = list(set(img_list))
+
+ #        number_of_images = 16
     
         grid_size = math.ceil(math.sqrt(number_of_images))
         axes = []
         fig = plt.figure(figsize=(20, 15))
-        for a in range(number_of_images):
-            axes.append(fig.add_subplot(grid_size, grid_size, a + 1))
-            plt.axis('off')
-            img = Image.open(img_list[a])
-            img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
-            plt.imshow(img_resized)
-        fig.tight_layout()
-        fig.subplots_adjust(top=0.93)
-        #fig.suptitle('Similar Result Found', fontsize=22)
+        
+	for i in range(len(results)):
+  		axes.append(fig.add_subplot(grid_size, grid_size, i + 1))
+  		plt.axis('off')
+  		image_number = results[i][0]
+  		image_name = image_list[image_number]
+  		score = results[i][1]
+  		img = Image.open(image_name)
+  		img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
+  		plt.imshow(img_resized)
+	#plt.title(f"Image {i}: {score}", fontsize=18)
+	fig.tight_layout()
+	fig.subplots_adjust(top=0.93)
+	#plt.show(fig)
+
+	# for a in range(number_of_images):
+        #     axes.append(fig.add_subplot(grid_size, grid_size, a + 1))
+        #     plt.axis('off')
+        #     img = Image.open(img_list[a])
+        #     img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
+        #     plt.imshow(img_resized)
+        # fig.tight_layout()
+        # fig.subplots_adjust(top=0.93)
+        # #fig.suptitle('Similar Result Found', fontsize=22)
 
 
 ####################################################################################################################################################
