@@ -7,6 +7,7 @@ import numpy as np
 from torchvision import transforms
 import torch
 #from torch.autograd import Variable
+import os
 import math
 import time
 import uuid
@@ -59,6 +60,8 @@ def load_embeddings():
 @st.cache_resource
 def load_assets():
 	# Load images from a folder
+	url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/archive.zip"
+	download_and_unzip(url)
 	image_list = load_data(['animals'])
 
 	# Load indexed images
