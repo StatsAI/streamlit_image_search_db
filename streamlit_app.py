@@ -81,7 +81,9 @@ def load_model():
 
 url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/archive.zip"
 download_and_unzip(url)
+
 image_list, img_emb_loaded = load_assets()
+
 model = load_model()
 
 ####################################################################################################################################################
@@ -134,7 +136,7 @@ with st.sidebar:
 	# Display an image
         st.image(image_path)
 
-input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '')
+text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '')
 #st.write('The current animal is', input)
 
 ####################################################################################################################################################
@@ -143,7 +145,7 @@ input = st.sidebar.text_input("Text Search: Enter an animal's name using text", 
 def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
 	# Encode the text you want to return images of.
-	animal_embedding = model.encode(input)
+	animal_embedding = model.encode(text_input)
 
 	# Convert the embeddings to tensors.
 	img_emb_loaded = torch.tensor(img_emb_loaded)
