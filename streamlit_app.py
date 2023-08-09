@@ -33,8 +33,8 @@ def download_and_unzip(url):
 	with open("archive.zip", "wb") as f:
 		f.write(response.content)
 
-    with zipfile.ZipFile("archive.zip", "r") as zip_ref:
-        zip_ref.extractall()
+    	with zipfile.ZipFile("archive.zip", "r") as zip_ref:
+        	zip_ref.extractall()
 
 
 
