@@ -47,11 +47,13 @@ def load_data(folder_list: list):
 
 def load_embeddings():
 	url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/img_emb.pkl"
+	
 	with requests.get(url) as r:
 		pickle_file = r.content
-
-    	img_emb_loaded = pickle.loads(pickle_file)
-    	return img_emb_loaded
+	
+	img_emb_loaded = pickle.loads(pickle_file)
+	
+	return img_emb_loaded
 
 
 # Load Pre-trained Assets
