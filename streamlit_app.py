@@ -56,7 +56,7 @@ def calculate_embedding(image_path: str):
 	try:
 		image = Image.open(image_path)
 	return model.encode(image).tolist()
-    except:
+    	except:
 		return None
 
 
