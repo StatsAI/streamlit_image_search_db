@@ -165,6 +165,9 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
   		image_score = most_similar_images[0][i]['score']
 
   		results.append([image_id, image_score])
+
+
+	st.write(results)
 	
 	# grid_size = math.ceil(math.sqrt(number_of_images))
  #        axes = []
