@@ -2,24 +2,23 @@
 # No part of this code may be used or reproduced without express permission.
 
 import streamlit as st
-import DeepImageSearch.config as config
-from DeepImageSearch import Load_Data, Search_Setup
-import requests
-import zipfile
-import os
-import pandas as pd
-import matplotlib.pyplot as plt
-from PIL import Image
 from tqdm import tqdm
 import numpy as np
 from torchvision import transforms
 import torch
 from torch.autograd import Variable
-import timm
-from PIL import ImageOps
 import math
-import faiss
 import time
+import uuid
+
+from sentence_transformers import SentenceTransformer, util
+from PIL import Image
+from IPython.display import display
+import matplotlib.pyplot as plt
+from PIL import Image
+from PIL import ImageOps
+import pickle
+
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
@@ -64,9 +63,6 @@ def load_assets():
 
 	# Load indexed images
 	img_emb_loaded = load_embeddings()
-
-	# Load image features
-	#image_data = pd.read_pickle("image_data_features.pkl")
 
 	return image_list, img_emb_loaded
 
