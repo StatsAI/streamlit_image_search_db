@@ -116,7 +116,7 @@ st.title('Image Recommendation App')
 st.write('This is a web app to demo reverse image search using Qdrant Vector Database.')
 st.sidebar.write('Use either option below to find similar images!') 
 
-images_recs = st.sidebar.slider(label = 'Reverse Image Search', min_value = 0,
+images_recs = st.sidebar.slider(label = 'Reverse Image Search - Select an image from the index', min_value = 0,
                           max_value = 5400,
                           value = 150,
                           step = 1)
@@ -127,7 +127,7 @@ with st.sidebar:
 	# Display an image
         st.image(image_path)
 
-input = st.sidebar.text_input('Reverse Text Search', 'Dog')
+input = st.sidebar.text_input('Reverse Text Search - Enter animal name using text', 'Dog')
 st.write('The current animal is', input)
 
 ####################################################################################################################################################
