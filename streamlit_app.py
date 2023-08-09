@@ -11,6 +11,7 @@ import os
 import math
 import time
 import uuid
+import requests
 
 from sentence_transformers import SentenceTransformer, util
 from PIL import Image
