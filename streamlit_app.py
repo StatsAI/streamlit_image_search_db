@@ -165,36 +165,23 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
   		image_score = most_similar_images[0][i]['score']
 
   		results.append([image_id, image_score])
-
-	# input_img = Image.open(image_path)
-
- #        query_vector = _get_query_vector(image_path)
- #        img_list = list(_search_by_vector(query_vector, number_of_images).values())
-
- #        img_list = [path.replace('drive/MyDrive/archive/', '') for path in img_list] #Image Path
-
- #        img_list.append(image_path)
-
- #        img_list = list(set(img_list))
-
- #        number_of_images = 16
-    
-        grid_size = math.ceil(math.sqrt(number_of_images))
-        axes = []
-        fig = plt.figure(figsize=(20, 15))
+	
+	# grid_size = math.ceil(math.sqrt(number_of_images))
+ #        axes = []
+ #        fig = plt.figure(figsize=(20, 15))
         
-	for i in range(len(results)):
-  		axes.append(fig.add_subplot(grid_size, grid_size, i + 1))
-  		plt.axis('off')
-  		image_number = results[i][0]
-  		image_name = image_list[image_number]
-  		score = results[i][1]
-  		img = Image.open(image_name)
-  		img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
-  		plt.imshow(img_resized)
-	#plt.title(f"Image {i}: {score}", fontsize=18)
-	fig.tight_layout()
-	fig.subplots_adjust(top=0.93)
+	# for i in range(len(results)):
+ #  		axes.append(fig.add_subplot(grid_size, grid_size, i + 1))
+ #  		plt.axis('off')
+ #  		image_number = results[i][0]
+ #  		image_name = image_list[image_number]
+ #  		score = results[i][1]
+ #  		img = Image.open(image_name)
+ #  		img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
+ #  		plt.imshow(img_resized)
+	# #plt.title(f"Image {i}: {score}", fontsize=18)
+	# fig.tight_layout()
+	# fig.subplots_adjust(top=0.93)
 	#plt.show(fig)
 
 	# for a in range(number_of_images):
