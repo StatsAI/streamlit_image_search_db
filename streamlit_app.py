@@ -148,7 +148,11 @@ text_input = st.sidebar.text_input("Text Search: Enter an animal's name using te
 def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
 	# Encode the text you want to return images of.
-	animal_embedding = model.encode(text_input)
+	#animal_embedding = model.encode(text_input)
+
+
+	animal_embedding = model.encode("dog")
+	
 	animal_embedding = torch.tensor(animal_embedding)
 
 	number_of_images = 16
