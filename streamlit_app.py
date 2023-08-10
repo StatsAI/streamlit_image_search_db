@@ -86,6 +86,8 @@ image_list, img_emb_loaded = load_assets()
 
 model = load_model()
 
+st.write(img_emb_loaded)
+
 ####################################################################################################################################################
 
 logo = Image.open('images/picture.png')
