@@ -30,7 +30,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 ####################################################################################################################################################
 
 # Download and unzip images
-#@st.cache_resource
+@st.cache_resource
 def download_and_unzip(url):
 	response = requests.get(url)
 	with open("archive.zip", "wb") as f:
@@ -149,7 +149,6 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
 	# Encode the text you want to return images of.
 	#animal_embedding = model.encode(text_input)
-
 
 	animal_embedding = model.encode("dog")
 	
