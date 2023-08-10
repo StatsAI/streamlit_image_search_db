@@ -55,9 +55,9 @@ def load_embeddings():
 	with requests.get(url) as r:
 		pickle_file = r.content
 	
-	img_emb_loaded = pickle.loads(pickle_file)
+	holder = pickle.loads(pickle_file)
 	
-	return img_emb_loaded
+	return holder
 
 
 ## Load Pre-trained Assets
@@ -86,7 +86,7 @@ image_list, img_emb_loaded = load_assets()
 
 model = load_model()
 
-st.write(type(img_emb_loaded))
+#st.write(type(img_emb_loaded))
 
 ####################################################################################################################################################
 
