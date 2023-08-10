@@ -68,6 +68,7 @@ def load_assets():
 
 	# Load indexed images
 	img_emb_loaded = load_embeddings()
+	img_emb_loaded = torch.tensor(img_emb_loaded)	
 
 	return image_list, img_emb_loaded
 
@@ -156,7 +157,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
 
 	# Convert the embeddings to tensors.
-	img_emb_loaded = torch.tensor(img_emb_loaded)
+	#img_emb_loaded = torch.tensor(img_emb_loaded)
 	animal_embedding = torch.tensor(animal_embedding)
 
 	number_of_images = 16
