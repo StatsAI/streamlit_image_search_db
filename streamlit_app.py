@@ -150,7 +150,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 	# Encode the text you want to return images of.
 	#animal_embedding = model.encode(text_input)
 
-	animal_embedding = model.encode("dog")
+	#animal_embedding = model.encode("dog")
 	animal_embedding = torch.tensor(animal_embedding)
 
 	number_of_images = 16
@@ -161,7 +161,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 	# Create a list to store the results.
 	results = []
 
-	st.write(most_similar_images)
+	st.write(image_path[:5)
 
 	# Loop over the images in the most_similar_images variable.
 	for i in range(len(most_similar_images[0])):
