@@ -168,10 +168,10 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
   		results.append([image_id, image_score])
 
 
-	st.write(results)
-	
+	#st.write(results)
 	grid_size = math.ceil(math.sqrt(number_of_images))
-        axes = []
+	
+	axes = []
         fig = plt.figure(figsize=(20, 15))
         
 	for i in range(len(results)):
