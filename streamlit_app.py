@@ -147,7 +147,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 	# Encode the text you want to return images of.
 	animal_embedding = model.encode(text_input)
 
-	img_emb_loaded = pickle.load(open(img_emb_loaded, "rb"))
+	#img_emb_loaded = pickle.load(open(img_emb_loaded, "rb"))
 
 
 	# Convert the embeddings to tensors.
