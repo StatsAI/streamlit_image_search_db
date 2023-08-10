@@ -86,7 +86,7 @@ image_list, img_emb_loaded = load_assets()
 
 model = load_model()
 
-st.write(img_emb_loaded)
+#st.write(img_emb_loaded)
 
 ####################################################################################################################################################
 
@@ -152,7 +152,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 	#img_emb_loaded = pickle.load(open(img_emb_loaded, "rb"))
 
 	with open("img_emb.pkl", "rb") as fIn:
-        img_emb_loaded = pickle.load(fIn)
+        	img_emb_loaded = pickle.load(fIn)
 
 
 	# Convert the embeddings to tensors.
