@@ -151,6 +151,9 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
 	#img_emb_loaded = pickle.load(open(img_emb_loaded, "rb"))
 
+	with open("img_emb.pkl", "rb") as fIn:
+        img_emb_loaded = pickle.load(fIn)
+
 
 	# Convert the embeddings to tensors.
 	img_emb_loaded = torch.tensor(img_emb_loaded)
