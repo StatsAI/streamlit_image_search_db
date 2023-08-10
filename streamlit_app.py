@@ -149,15 +149,6 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
 	# Encode the text you want to return images of.
 	animal_embedding = model.encode(text_input)
-
-	#img_emb_loaded = pickle.load(open(img_emb_loaded, "rb"))
-
-	#with open("img_emb.pkl", "rb") as fIn:
-        #	img_emb_loaded = pickle.load(fIn)
-
-
-	# Convert the embeddings to tensors.
-	#img_emb_loaded = torch.tensor(img_emb_loaded)
 	animal_embedding = torch.tensor(animal_embedding)
 
 	number_of_images = 16
@@ -167,7 +158,6 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
 	# Create a list to store the results.
 	results = []
-
 
 	# Loop over the images in the most_similar_images variable.
 	for i in range(len(most_similar_images[0])):
@@ -180,23 +170,23 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
 	st.write(results)
 	
-	# grid_size = math.ceil(math.sqrt(number_of_images))
- #        axes = []
- #        fig = plt.figure(figsize=(20, 15))
+	grid_size = math.ceil(math.sqrt(number_of_images))
+        axes = []
+        fig = plt.figure(figsize=(20, 15))
         
-	# for i in range(len(results)):
- #  		axes.append(fig.add_subplot(grid_size, grid_size, i + 1))
- #  		plt.axis('off')
- #  		image_number = results[i][0]
- #  		image_name = image_list[image_number]
- #  		score = results[i][1]
- #  		img = Image.open(image_name)
- #  		img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
- #  		plt.imshow(img_resized)
-	# #plt.title(f"Image {i}: {score}", fontsize=18)
-	# fig.tight_layout()
-	# fig.subplots_adjust(top=0.93)
-	#plt.show(fig)
+	for i in range(len(results)):
+  		axes.append(fig.add_subplot(grid_size, grid_size, i + 1))
+  		plt.axis('off')
+  		image_number = results[i][0]
+  		image_name = image_list[image_number]
+  		score = results[i][1]
+  		img = Image.open(image_name)
+  		img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
+  		plt.imshow(img_resized)
+	#plt.title(f"Image {i}: {score}", fontsize=18)
+	fig.tight_layout()
+	fig.subplots_adjust(top=0.93)
+	plt.show(fig)
 
 	# for a in range(number_of_images):
         #     axes.append(fig.add_subplot(grid_size, grid_size, a + 1))
