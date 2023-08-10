@@ -183,7 +183,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 	#plt.title(f"Image {i}: {score}", fontsize=18)
 	fig.tight_layout()
 	fig.subplots_adjust(top=0.93)
-	plt.show(fig)
+	#plt.show(fig)
 
 	# for a in range(number_of_images):
         #     axes.append(fig.add_subplot(grid_size, grid_size, a + 1))
