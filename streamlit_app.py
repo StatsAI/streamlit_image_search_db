@@ -56,8 +56,7 @@ def load_embeddings():
 		pickle_file = r.content
 	
 	holder = pickle.loads(pickle_file)
-	holder = torch.tensor(holder)
-	
+		
 	return holder
 
 
@@ -69,6 +68,7 @@ def load_assets():
 
 	# Load indexed images
 	img_emb_loaded = load_embeddings()
+	img_emb_loaded = torch.tensor(img_emb_loaded)
 
 	return image_list, img_emb_loaded
 
