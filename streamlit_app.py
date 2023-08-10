@@ -166,13 +166,10 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
   		image_score = most_similar_images[0][i]['score']
 
   		results.append([image_id, image_score])
-
-
-	#st.write(results)
-	grid_size = math.ceil(math.sqrt(number_of_images))
 	
+	grid_size = math.ceil(math.sqrt(number_of_images))
 	axes = []
-        fig = plt.figure(figsize=(20, 15))
+	fig = plt.figure(figsize=(20, 15))
         
 	for i in range(len(results)):
   		axes.append(fig.add_subplot(grid_size, grid_size, i + 1))
