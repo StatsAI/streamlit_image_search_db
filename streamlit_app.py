@@ -171,7 +171,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 	# Create a list to store the results.
 	results = []
 
-	st.write(image_list[:5])
+	#st.write(image_list[:5])
 
 	# Loop over the images in the most_similar_images variable.
 	for i in range(len(most_similar_images[0])):
