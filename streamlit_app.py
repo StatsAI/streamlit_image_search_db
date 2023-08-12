@@ -172,13 +172,21 @@ text_input = st.sidebar.text_input("Input window", key="text", on_change=clear_t
 def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
 	# Encode the text you want to return images of.	
-	if text_input != "":
-		animal_embedding = model.encode(text_input)
-		st.session_state["temp"]	
-	#text_input = ""
-	else:
-		animal_embedding = model.encode(image_path)	
+	# if text_input != "":
+	# 	animal_embedding = model.encode(text_input)
+	# 	st.session_state["temp"]	
+	# #text_input = ""
+	# else:
+	# 	animal_embedding = model.encode(image_path)	
 
+
+
+	# Encode the text you want to return images of.
+    	if text_input != "" and text_input != st.session_state["temp"]:
+        	animal_embedding = model.encode(text_input)
+        	st.session_state["temp"] = text_input
+    	else:
+        	animal_embedding = model.encode(image_path)
 	#animal_embedding = model.encode("dog")
 
 	#st.sidebar.text_input("Text Search: Enter an animal's name using text", '')
