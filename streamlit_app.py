@@ -163,6 +163,7 @@ def clear_text():
 
 text_input = st.sidebar.text_input("Input window", key="text", on_change=clear_text)
 
+st.write(text_input)
 ####################################################################################################################################################
 
 
