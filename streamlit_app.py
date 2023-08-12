@@ -67,7 +67,7 @@ def load_embeddings():
 
 
 ## Load Pre-trained Assets
-#@st.cache_resource
+@st.cache_resource
 def load_assets():
 	# Load images from a folder
 	image_list = load_data(['animals'])
