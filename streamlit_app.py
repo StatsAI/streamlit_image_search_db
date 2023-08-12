@@ -161,7 +161,7 @@ with st.sidebar:
 def clear_text():
 	st.session_state["text"] = ""
 
-#text_input = st.sidebar.text_input("Input window", key="text")
+text_input = st.sidebar.text_input("Input window", key="text")
 
 #st.write(text_input)
 ####################################################################################################################################################
@@ -179,7 +179,6 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 	# else:
 	# 	animal_embedding = model.encode(image_path)	
 
-	text_input = st.sidebar.text_input("Input window", key="text")
 	#Encode the text you want to return images of.	
 	if text_input != "":
 		animal_embedding = model.encode(text_input)
