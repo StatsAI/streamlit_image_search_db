@@ -61,6 +61,7 @@ def load_embeddings():
 
 	# Create a dictionary from the string
 	img_dict = json.loads(file_content)
+	img_dict = list(img_dict.values())
 		
 	return img_dict
 
@@ -73,7 +74,6 @@ def load_assets():
 
 	# Load indexed images
 	img_emb_loaded = load_embeddings()
-	img_emb_loaded = list(img_dict.values())
 	img_emb_loaded = torch.tensor(img_emb_loaded)
 
 	return image_list, img_emb_loaded
