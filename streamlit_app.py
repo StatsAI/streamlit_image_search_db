@@ -183,6 +183,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 	if text_input != "":
 		animal_embedding = model.encode(text_input)
 		animal_embedding = torch.tensor(animal_embedding)
+		st.session_state["text"] = ""
 		#clear_text()
 		#st.session_state["temp"] = text_input	
 	else:
