@@ -52,13 +52,15 @@ def load_data(folder_list: list):
 
 def load_embeddings():
 	url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/img_dict.txt"
-	
-	with requests.get(url) as r:
-		result = r.content
-	
-	with open("img_dict.txt", "r") as fp:
-    	# Load the dictionary from the file
-    		img_dict = json.load(fp)
+
+	# Download the file
+	response = requests.get(url)
+
+	# Load the file into a string
+	file_content = response.content.decode("utf-8")
+
+	# Create a dictionary from the string
+	img_dict = json.loads(file_content)
 		
 	return img_dict
 
