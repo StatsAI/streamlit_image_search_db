@@ -61,19 +61,21 @@ def load_embeddings():
 
 	# Create a dictionary from the string
 	img_dict = json.loads(file_content)
-	img_dict = list(img_dict.values())
+	
+	img_list = list(img_dict.keys())
+	img_emb = list(img_dict.values())
 		
-	return img_dict
+	return img_list, img_emb
 
 
 ## Load Pre-trained Assets
 @st.cache_resource
 def load_assets():
 	# Load images from a folder
-	image_list = load_data(['animals'])
+	#image_list = load_data(['animals'])
 
 	# Load indexed images
-	img_emb_loaded = load_embeddings()
+	image_list, img_emb_loaded = load_embeddings()
 	img_emb_loaded = torch.tensor(img_emb_loaded)
 
 	return image_list, img_emb_loaded
