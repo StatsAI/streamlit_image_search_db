@@ -250,8 +250,7 @@ if st.sidebar.button('Get Similar Images'):
 	#st.session_state.results = st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
 
 	#fig, ax = plt.subplots()
-	st.pyplot(plot_similar_images_new(image_path, number_of_images = 20))
-	clear_input_box()
+	st.pyplot(plot_similar_images_new(image_path, number_of_images = 20))	
 	#plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20)
 	#text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '')
 	
