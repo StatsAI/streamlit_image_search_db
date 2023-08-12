@@ -147,13 +147,13 @@ with st.sidebar:
 	# Display an image
         st.image(image_path)
 
-#text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '')
+text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '')
 #st.write('The current animal is', input)
 
 def clear_input_box():
 	st.session_state["new_item"] = ""
 
-text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '', on_change=clear_input_box, key="new_item")
+#text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '', on_change=clear_input_box, key="new_item")
 
 ####################################################################################################################################################
 
