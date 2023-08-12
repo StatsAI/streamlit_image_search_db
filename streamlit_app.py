@@ -163,7 +163,7 @@ def clear_text():
 
 text_input = st.sidebar.text_input("Input window", key="text")
 
-st.write(text_input)
+#st.write(text_input)
 ####################################################################################################################################################
 
 
@@ -184,6 +184,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 	if text_input != "":
 		animal_embedding = model.encode(text_input)
 		animal_embedding = torch.tensor(animal_embedding)
+		clear_text()
 		#st.session_state["temp"] = text_input	
 	else:
 		animal_embedding = model.encode(image_path)
