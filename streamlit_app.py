@@ -155,12 +155,11 @@ with st.sidebar:
 
 #text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '', key="text")
 
-if "temp" not in st.session_state:
-    st.session_state["temp"] = ""
+#if "temp" not in st.session_state:
+#    st.session_state["temp"] = ""
 
 def clear_text():
-    st.session_state["temp"] = st.session_state["text"]
-    st.session_state["text"] = ""
+	st.session_state["text"] = ""
 
 text_input = st.sidebar.text_input("Input window", key="text", on_change=clear_text)
 
