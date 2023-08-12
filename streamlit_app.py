@@ -50,14 +50,16 @@ def load_data(folder_list: list):
 	return image_path
 
 def load_embeddings():
-	url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/img_emb.pkl"
+	url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/img_dict.txt"
 	
 	with requests.get(url) as r:
-		pickle_file = r.content
+		result = r.content
 	
-	holder = pickle.loads(pickle_file)
+	with open("img_dict.txt", "r") as fp:
+    	# Load the dictionary from the file
+    		img_dict = json.load(fp)
 		
-	return holder
+	return img_dict
 
 
 ## Load Pre-trained Assets
