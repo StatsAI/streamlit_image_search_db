@@ -147,10 +147,17 @@ with st.sidebar:
 	# Display an image
         st.image(image_path)
 
-text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '')
+#text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '')
 #st.write('The current animal is', input)
 
+def clear_input_box():
+	st.session_state["new_item"] = ""
+
+text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '', on_change=clear_input_box, key="new_item")
+
 ####################################################################################################################################################
+
+
 
 #@st.cache_resource
 def plot_similar_images_new(image_path: str, number_of_images: int = 6):
@@ -163,7 +170,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
 	#animal_embedding = model.encode("dog")
 
-	st.sidebar.text_input("Text Search: Enter an animal's name using text", '')
+	#st.sidebar.text_input("Text Search: Enter an animal's name using text", '')
 	
 	animal_embedding = torch.tensor(animal_embedding)
 
