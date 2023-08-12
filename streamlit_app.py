@@ -157,8 +157,10 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
 	# Encode the text you want to return images of.
 
-	animal_embedding = model.encode(image_path)
-	#animal_embedding = model.encode(text_input)
+	if text_input != '':
+		animal_embedding = model.encode(text_input)
+	else:
+		animal_embedding = model.encode(image_path)	
 
 	#animal_embedding = model.encode("dog")
 	animal_embedding = torch.tensor(animal_embedding)
@@ -220,6 +222,7 @@ if st.sidebar.button('Get Similar Images'):
 	#fig, ax = plt.subplots()
 	st.pyplot(plot_similar_images_new(image_path, number_of_images = 20))
 	#plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20)
+	text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '')
 	
 
 ####################################################################################################################################################	
