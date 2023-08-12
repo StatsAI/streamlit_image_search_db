@@ -181,11 +181,10 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
 
 	#Encode the text you want to return images of.	
-	if text_input != "" and text_input != st.session_state["temp"]:
+	if text_input != "":
 		animal_embedding = model.encode(text_input)
 		animal_embedding = torch.tensor(animal_embedding)
 		st.session_state["temp"] = text_input	
-	#text_input = ""
 	else:
 		animal_embedding = model.encode(image_path)
 		animal_embedding = torch.tensor(animal_embedding)
