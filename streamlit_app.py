@@ -161,7 +161,7 @@ with st.sidebar:
 def clear_text():
 	st.session_state["text"] = ""
 
-text_input = st.sidebar.text_input("Input window", key="text", on_change=clear_text)
+text_input = st.sidebar.text_input("Input window", key="text")
 
 st.write(text_input)
 ####################################################################################################################################################
