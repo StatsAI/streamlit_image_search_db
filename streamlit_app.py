@@ -73,6 +73,7 @@ def load_assets():
 
 	# Load indexed images
 	img_emb_loaded = load_embeddings()
+	img_emb_loaded = list(img_dict.values())
 	img_emb_loaded = torch.tensor(img_emb_loaded)
 
 	return image_list, img_emb_loaded
