@@ -151,9 +151,9 @@ text_input = st.sidebar.text_input("Text Search: Enter an animal's name using te
 #st.write('The current animal is', input)
 
 def clear_input_box():
-	st.session_state["new_item"] = ""
+	st.session_state["text"] = ""
 
-#text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '', on_change=clear_input_box, key="new_item")
+text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '', key="text")
 
 ####################################################################################################################################################
 
@@ -231,6 +231,7 @@ if st.sidebar.button('Get Similar Images'):
 
 	#fig, ax = plt.subplots()
 	st.pyplot(plot_similar_images_new(image_path, number_of_images = 20))
+	clear_input_box()
 	#plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20)
 	#text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '')
 	
