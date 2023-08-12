@@ -180,7 +180,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 	# 	animal_embedding = model.encode(image_path)	
 
 
-	Encode the text you want to return images of.	
+	#Encode the text you want to return images of.	
 	if text_input != "" and text_input != st.session_state["temp"]:
 		animal_embedding = model.encode(text_input)
 		animal_embedding = torch.tensor(animal_embedding)
