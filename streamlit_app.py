@@ -158,7 +158,7 @@ with st.sidebar:
 #if "temp" not in st.session_state:
 #    st.session_state["temp"] = ""
 
-text_input = st.sidebar.text_input("Input window". '')
+text_input = st.sidebar.text_input("Input window", '')
 
 #st.write(text_input)
 ####################################################################################################################################################
