@@ -168,6 +168,8 @@ text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=c
 #@st.cache_resource
 def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 
+	animal_embedding = model.encode(image_path)
+	
 	# Encode the text you want to return images of.	
 	# if text_input != "":
 	# 	animal_embedding = model.encode(text_input)
@@ -176,18 +178,18 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 	# else:
 	# 	animal_embedding = model.encode(image_path)	
 
-	#Encode the text you want to return images of.	
-	if  st.sidebar.text_input != "":
-		animal_embedding = model.encode(text_input)
-		#animal_embedding = torch.tensor(animal_embedding)
-		#st.sidebar.text_input("Input window", '', key = 'text')
+	# #Encode the text you want to return images of.	
+	# if  st.sidebar.text_input != "":
+	# 	animal_embedding = model.encode(text_input)
+	# 	#animal_embedding = torch.tensor(animal_embedding)
+	# 	#st.sidebar.text_input("Input window", '', key = 'text')
 		
-		##st.session_state["text"] = ""
-		#clear_text()
-		#st.session_state["temp"] = text_input	
-	else:
-		animal_embedding = model.encode(image_path)
-		#animal_embedding = torch.tensor(animal_embedding)
+	# 	##st.session_state["text"] = ""
+	# 	#clear_text()
+	# 	#st.session_state["temp"] = text_input	
+	# else:
+	# 	animal_embedding = model.encode(image_path)
+	# 	#animal_embedding = torch.tensor(animal_embedding)
 
 	#animal_embedding = model.encode("dog")
 
