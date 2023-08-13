@@ -179,7 +179,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 	#Encode the text you want to return images of.	
 	if  st.sidebar.text_input != "":
 		animal_embedding = model.encode(text_input)
-		animal_embedding = torch.tensor(animal_embedding)
+		#animal_embedding = torch.tensor(animal_embedding)
 		#st.sidebar.text_input("Input window", '', key = 'text')
 		
 		##st.session_state["text"] = ""
@@ -187,7 +187,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 		#st.session_state["temp"] = text_input	
 	else:
 		animal_embedding = model.encode(image_path)
-		animal_embedding = torch.tensor(animal_embedding)
+		#animal_embedding = torch.tensor(animal_embedding)
 
 	#animal_embedding = model.encode("dog")
 
@@ -195,6 +195,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 	
 	#animal_embedding = torch.tensor(animal_embedding)
 
+	animal_embedding = torch.tensor(animal_embedding)
 	number_of_images = 16
 
 	# Find the top 10 most similar images to the bear embedding.
