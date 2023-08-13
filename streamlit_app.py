@@ -165,7 +165,6 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 		animal_embedding = model.encode(text_input)
 	
 	animal_embedding = torch.tensor(animal_embedding)
-	number_of_images = 16
 
 	# Find the top 10 most similar images to the bear embedding.
 	most_similar_images = util.semantic_search(query_embeddings = animal_embedding, corpus_embeddings = img_emb_loaded, top_k = number_of_images)
@@ -202,7 +201,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 ####################################################################################################################################################
 
 if st.sidebar.button('Get Similar Images'):
-	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 20))
+	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 16))
 	#text_input = ""
 	#text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)	
 	
