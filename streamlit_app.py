@@ -88,7 +88,7 @@ def load_model():
 	return model
 
 @st.cache_resource
-def create_vector_db_input(img_emb_loaded):
+def create_vector_db_input(_img_emb_loaded):
 	img_emb_loaded = img_emb_loaded.tolist()
 	image_names = range(0,len(image_list))
 
