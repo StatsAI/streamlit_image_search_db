@@ -162,7 +162,11 @@ with st.sidebar:
 
 #text_input = st.sidebar.text_input("Input window", "")
 
-text_input = st.sidebar.text_input("Input window", "", key = "text")
+def clear_input_box():
+	st.session_state["text"] = ""
+
+text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)
+
 
 #text_input = st.session_state["text"]
 
