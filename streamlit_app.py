@@ -200,10 +200,14 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 
 ####################################################################################################################################################
 
-if st.sidebar.button('Get Similar Images'):
+if st.sidebar.button('Image Search'):
 	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 16))
 	#text_input = ""
 	#text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)	
-	
+
+if st.sidebar.button('Text Search'):
+	st.pyplot(plot_similar_images_new(text_input, number_of_images = 16))
+	#text_input = ""
+	#text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)
 
 ####################################################################################################################################################	
