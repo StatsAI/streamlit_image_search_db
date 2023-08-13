@@ -87,8 +87,19 @@ def load_model():
 	model = SentenceTransformer("clip-ViT-B-32")
 	return model
 
+@st.cache_resource
+def create_vector_db_input(img_emb_loaded):
+	img_emb_loaded = img_emb_loaded.tolist()
+	image_names = range(0,len(image_list))
+	
+	df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded), columns = ['image_name', 'image_path','embedding'])
 
-def vector_db(img_emb_loaded, animal_embedding):
+	payloads = df[['image_name', 'image_path']].fillna("Unknown").to_dict("records")
+
+	return payloads
+
+
+def vector_db(payloads, animal_embedding):
 	
 	#client = QdrantClient("localhost")
 	#collections = client.get_collections()
@@ -98,13 +109,13 @@ def vector_db(img_emb_loaded, animal_embedding):
 	
 	client.recreate_collection(collection_name="animals", vectors_config=rest.VectorParams(size=512, distance=rest.Distance.COSINE))
 
-	img_emb_loaded = img_emb_loaded.tolist()
-	animal_embedding = animal_embedding.tolist()
-	image_names = range(0,len(image_list))
+	# img_emb_loaded = img_emb_loaded.tolist()
+	# animal_embedding = animal_embedding.tolist()
+	# image_names = range(0,len(image_list))
 	
-	df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded), columns = ['image_name', 'image_path','embedding'])
+	# df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded), columns = ['image_name', 'image_path','embedding'])
 
-	payloads = df[['image_name', 'image_path']].fillna("Unknown").to_dict("records")
+	# payloads = df[['image_name', 'image_path']].fillna("Unknown").to_dict("records")
 	
 	client.upload_collection(collection_name="animals", 
 				 vectors=list(map(list, df["embedding"].tolist())),
@@ -125,6 +136,8 @@ download_and_unzip(url)
 image_list, img_emb_loaded = load_assets()
 
 model = load_model()
+
+payloads = create_vector_db_input(img_emb_loaded)
 
 ####################################################################################################################################################
 
@@ -190,7 +203,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	
 	animal_embedding = torch.tensor(animal_embedding)
 
-	results = vector_db(img_emb_loaded, animal_embedding)
+	results = vector_db(payloads, animal_embedding)
 
 	grid_size = math.ceil(math.sqrt(number_of_images))
 	axes = []
