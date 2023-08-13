@@ -235,30 +235,16 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 	#plt.title(f"Image {i}: {score}", fontsize=18)
 	fig.tight_layout()
 	fig.subplots_adjust(top=0.93)
-	#plt.show(fig)
-
-	# for a in range(number_of_images):
-        #     axes.append(fig.add_subplot(grid_size, grid_size, a + 1))
-        #     plt.axis('off')
-        #     img = Image.open(img_list[a])
-        #     img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
-        #     plt.imshow(img_resized)
-        # fig.tight_layout()
-        # fig.subplots_adjust(top=0.93)
-        # #fig.suptitle('Similar Result Found', fontsize=22)
 
 
 ####################################################################################################################################################
 
 if st.sidebar.button('Get Similar Images'):
 	
-	#candidate_predictions = retrieval_predict(num_recs, user_id)
-	#st.session_state.results = st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
 
-	#fig, ax = plt.subplots()
 	st.pyplot(plot_similar_images_new(image_path, number_of_images = 20))
 	#text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)
-	#text_input = ""
+	text_input = ""
 	#plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20)
 	#text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '')
 	
