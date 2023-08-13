@@ -94,7 +94,7 @@ def vector_db(img_emb_loaded, animal_embedding):
 		collections = client.get_collections()
 	except Exception:
        		client = QdrantClient(":memory:")
-    		collections = client.get_collections()
+		collections = client.get_collections()
 
 
 	client.recreate_collection(collection_name="animals", 
