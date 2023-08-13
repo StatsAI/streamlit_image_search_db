@@ -154,13 +154,8 @@ text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete input to 
 #@st.cache_resource
 def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	
-	#animal_embedding = model.encode(text_input)
 	animal_embedding = model.encode(image_path)	
 
-	#if image_path != "":
-	#	animal_embedding = model.encode(image_path)
-	#	image_path = ""
-	
 	if text_input:
 		animal_embedding = model.encode(text_input)
 	
