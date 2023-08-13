@@ -87,8 +87,8 @@ def load_model():
 	model = SentenceTransformer("clip-ViT-B-32")
 	return model
 
-@st.cache_resource
-def create_vector_db_input(_img_emb_loaded):
+#@st.cache_resource
+def create_vector_db_input(img_emb_loaded):
 	img_emb_loaded = img_emb_loaded.tolist()
 	image_names = range(0,len(image_list))
 	
