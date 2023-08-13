@@ -155,16 +155,16 @@ with st.sidebar:
 
 #text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '', key="text")
 
-if "text" not in st.session_state:
-   st.session_state["text"] = ""
+#if "text" not in st.session_state:
+#   st.session_state["text"] = ""
 
 #text_input = st.session_state["text"]
 
 #text_input = st.sidebar.text_input("Input window", "")
 
-st.session_state["text"] = st.sidebar.text_input("Input window", "")
+st.session_state["text"] = st.sidebar.text_input("Input window", "", key = "text")
 
-text_input = st.session_state["text"]
+#text_input = st.session_state["text"]
 
 #st.write(text_input)
 ####################################################################################################################################################
