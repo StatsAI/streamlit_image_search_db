@@ -158,7 +158,7 @@ def clear_input_box():
 #if "temp" not in st.session_state:
 #    st.session_state["temp"] = ""
 
-text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)
+text_input = st.sidebar.text_input("Input window", "", key = "text")
 
 #st.write(text_input)
 ####################################################################################################################################################
@@ -256,7 +256,8 @@ if st.sidebar.button('Get Similar Images'):
 	#st.session_state.results = st.pyplot(plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20))
 
 	#fig, ax = plt.subplots()
-	st.pyplot(plot_similar_images_new(image_path, number_of_images = 20))	
+	st.pyplot(plot_similar_images_new(image_path, number_of_images = 20))
+	text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)
 	#text_input = ""
 	#plot_similar_images_new(image_path = image_list[images_recs], number_of_images = 20)
 	#text_input = st.sidebar.text_input("Text Search: Enter an animal's name using text", '')
