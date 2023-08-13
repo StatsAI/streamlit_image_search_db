@@ -195,8 +195,10 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 
 if st.sidebar.button('Get Similar Images'):
 	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 16))
+	st.session_state.text_input = ""  # Clear the text input
 	#st.session_state.something
 	#text_input = ""
 	#text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)	
 
+st.write(text_input)
 ####################################################################################################################################################	
