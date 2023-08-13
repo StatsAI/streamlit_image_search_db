@@ -190,20 +190,22 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	fig.tight_layout()
 	fig.subplots_adjust(top=0.93)
 
+	st.session_state.text_input = ""
+
 
 ####################################################################################################################################################
 
-# if st.sidebar.button('Get Similar Images'):
-# 	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 16))
-# 	st.session_state.text_input = ""
-# 	#st.session_state.something
-# 	#text_input = ""
-# 	#text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)	
-
 if st.sidebar.button('Get Similar Images'):
-	if not text_input:
-		st.session_state.text_input = ""
 	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 16))
+	st.session_state.text_input = ""
+	#st.session_state.something
+	#text_input = ""
+	#text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)	
+
+# if st.sidebar.button('Get Similar Images'):
+# 	if not text_input:
+# 		st.session_state.text_input = ""
+# 	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 16))
 
 
 #st.write(text_input)
