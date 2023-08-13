@@ -91,7 +91,7 @@ def load_model():
 def create_vector_db_input(img_emb_loaded):
 	img_emb_loaded = img_emb_loaded.tolist()
 	image_names = range(0,len(image_list))
-	
+
 	df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded), columns = ['image_name', 'image_path','embedding'])
 
 	payloads = df[['image_name', 'image_path']].fillna("Unknown").to_dict("records")
@@ -110,7 +110,7 @@ def vector_db(payloads, animal_embedding):
 	client.recreate_collection(collection_name="animals", vectors_config=rest.VectorParams(size=512, distance=rest.Distance.COSINE))
 
 	# img_emb_loaded = img_emb_loaded.tolist()
-	# animal_embedding = animal_embedding.tolist()
+	animal_embedding = animal_embedding.tolist()
 	# image_names = range(0,len(image_list))
 	
 	# df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded), columns = ['image_name', 'image_path','embedding'])
