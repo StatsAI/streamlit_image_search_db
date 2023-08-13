@@ -98,7 +98,7 @@ def create_vector_db_input(img_emb_loaded):
 
 	return payloads, df
 
-
+@st.cache_resource
 def vector_db(payloads, animal_embedding):
 	
 	#client = QdrantClient("localhost")
