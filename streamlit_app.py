@@ -156,6 +156,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 
 	if text_input:
 		animal_embedding = model.encode(text_input)
+		st.session_state.text_input = ""
 	
 	animal_embedding = torch.tensor(animal_embedding)
 
@@ -199,7 +200,7 @@ if st.sidebar.button('Get Similar Images'):
 	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 16))
 	text_input = ""
 	st.session_state.text_input = ""
-	st.experimental_rerun()
+	#st.experimental_rerun()
 	#st.session_state.something
 	#text_input = ""
 	#text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)	
