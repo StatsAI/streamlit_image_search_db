@@ -1,4 +1,4 @@
-# Try the app at [https://statsai-image-search-007.streamlit.app/?fbclid=IwAR03HqObg0rdi-Kf7kWPYy91PYCLCLeqr6gVTylYiSpMlCgxNuWR4gXN2jc](https://appimagesearchdb-bghvgku4fhakucrz2xeeum.streamlit.app/)
+# Try the app at https://appimagesearchdb-bghvgku4fhakucrz2xeeum.streamlit.app/
 
 ![image](https://github.com/StatsAI/streamlit_image_search_db/assets/67183539/ffb79606-da49-4653-8b73-6bdc082fb64a)
 ![image](https://github.com/StatsAI/streamlit_image_search_db/assets/67183539/e87ea60a-6f74-4f41-a97b-2d753a2d6d6a)
