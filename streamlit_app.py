@@ -70,7 +70,7 @@ def load_embeddings():
 
 
 ## Load Pre-trained Assets
-@st.cache_resource
+#@st.cache_resource
 def load_assets():
 	# Load images from a folder
 	#image_list = load_data(['animals'])
@@ -87,7 +87,7 @@ def load_model():
 	model = SentenceTransformer("clip-ViT-B-32")
 	return model
 
-#@st.cache_resource
+@st.cache_resource
 def create_vector_db_input(img_emb_loaded):
 	img_emb_loaded = img_emb_loaded.tolist()
 	image_names = range(0,len(image_list))
