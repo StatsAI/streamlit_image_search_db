@@ -199,10 +199,12 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	for i in range(len(results)):
   		axes.append(fig.add_subplot(grid_size, grid_size, i + 1))
   		plt.axis('off')
-  		image_name = results[i].payload['image_name']
+		
+		image_name = results[i].payload['image_name']
 		image_path = results[i].payload['image_path']
 		image_score = results[i].score
-  		img = Image.open(image_path)
+  		
+		img = Image.open(image_path)
   		img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
   		plt.imshow(img_resized)
 	#plt.title(f"Image {i}: {score}", fontsize=18)
