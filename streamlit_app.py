@@ -11,6 +11,8 @@ import os
 import math
 import time
 import uuid
+from qdrant_client import QdrantClient
+from qdrant_client.http import models as rest
 import requests
 import zipfile
 import json
@@ -23,8 +25,6 @@ from sentence_transformers import SentenceTransformer, util
 import matplotlib.pyplot as plt
 from PIL import Image
 from PIL import ImageOps
-import pickle
-
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
