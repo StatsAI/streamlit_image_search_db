@@ -187,6 +187,10 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	
 	animal_embedding = torch.tensor(animal_embedding)
 
+	x = vector_db(img_emb_loaded, animal_embedding)
+
+	st.write(x)
+
 	# Find the top 10 most similar images to the bear embedding.
 	most_similar_images = util.semantic_search(query_embeddings = animal_embedding, corpus_embeddings = img_emb_loaded, top_k = number_of_images)
 
