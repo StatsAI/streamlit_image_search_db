@@ -41,6 +41,7 @@ def download_and_unzip(url):
 	with zipfile.ZipFile("archive.zip", "r") as zip_ref:
         	zip_ref.extractall()
 
+@st.cache_resource
 def load_data(folder_list: list):
 	image_path = []
 	
@@ -51,6 +52,7 @@ def load_data(folder_list: list):
 					image_path.append(os.path.join(root, file))
 	return image_path
 
+@st.cache_resource
 def load_embeddings():
 	url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/img_dict.txt"
 
@@ -70,7 +72,7 @@ def load_embeddings():
 
 
 ## Load Pre-trained Assets
-#@st.cache_resource
+@st.cache_resource
 def load_assets():
 	# Load images from a folder
 	#image_list = load_data(['animals'])
