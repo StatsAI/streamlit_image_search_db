@@ -138,7 +138,7 @@ st.sidebar.write('Use either option to find similar images!')
 
 images_recs = st.sidebar.slider(label = 'Image Search: Select an animal using the slider', min_value = 1,
                           max_value = 5400,
-                          value = 150,
+                          value = 1859,
                           step = 1)
 
 image_path = image_list[images_recs - 1]
