@@ -147,7 +147,7 @@ with st.sidebar:
 	# Display an image
         st.image(image_path)
 
-text_input = st.sidebar.text_input("Input window", "", key = "text")
+text_input = st.sidebar.text_input("Text Search: Enter animal name ", "", key = "text")
 
 ####################################################################################################################################################
 
