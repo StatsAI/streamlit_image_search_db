@@ -95,8 +95,6 @@ image_list, img_emb_loaded = load_assets()
 
 model = load_model()
 
-#st.write(type(img_emb_loaded))
-
 ####################################################################################################################################################
 
 logo = Image.open('images/picture.png')
@@ -147,7 +145,18 @@ with st.sidebar:
 	# Display an image
         st.image(image_path)
 
-text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete input to use slider)", "", key = "text")
+#text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete input to use slider)", "", key = "text")
+
+if 'something' not in st.session_state:
+    st.session_state.something = ''
+
+def submit():
+    st.session_state.something = st.session_state.widget
+    st.session_state.widget = ''
+
+text_input = st.sidebar.text_input("Text Search: Enter animal", key='widget', on_change=submit)
+
+#st.write(f'Last submission: {st.session_state.something}')
 
 ####################################################################################################################################################
 
@@ -199,15 +208,5 @@ if st.sidebar.button('Get Similar Images'):
 	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 16))
 	#text_input = ""
 	#text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)	
-
-# if st.sidebar.button('Get Similar Images'):
-	
-# 	left_col, right_col = st.beta_columns(2)
-
-# 	with left_col:
-# 		text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)
-
-# 	with right_col:
-# 		st.button("Search")
 
 ####################################################################################################################################################	
