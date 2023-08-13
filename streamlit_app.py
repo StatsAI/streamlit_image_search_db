@@ -106,35 +106,13 @@ def create_vector_db_input(_img_emb_loaded):
 				 payload=payloads,
 				 ids=[uuid.uuid4().hex for _ in payloads])
 
-
-	#return payloads, df
-
 	return client
 
 #@st.cache_resource
 def vector_db(client, animal_embedding):
-	
-	#client = QdrantClient("localhost")
-	#collections = client.get_collections()
-	
-	# client = QdrantClient(":memory:")
-	# collections = client.get_collections()
-	
-	# client.recreate_collection(collection_name="animals", vectors_config=rest.VectorParams(size=512, distance=rest.Distance.COSINE))
 
-	# img_emb_loaded = img_emb_loaded.tolist()
 	animal_embedding = animal_embedding.tolist()
-	# image_names = range(0,len(image_list))
 	
-	# df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded), columns = ['image_name', 'image_path','embedding'])
-
-	# payloads = df[['image_name', 'image_path']].fillna("Unknown").to_dict("records")
-	
-	# client.upload_collection(collection_name="animals", 
-	# 			 vectors=list(map(list, df["embedding"].tolist())),
-	# 			 payload=payloads,
-	# 			 ids=[uuid.uuid4().hex for _ in payloads])
-
 	results = client.search(collection_name="animals",
 				query_vector=animal_embedding,
 				with_payload=True,
