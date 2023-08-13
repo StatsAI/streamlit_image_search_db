@@ -25,6 +25,7 @@ from sentence_transformers import SentenceTransformer, util
 import matplotlib.pyplot as plt
 from PIL import Image
 from PIL import ImageOps
+import pandas as pd
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
@@ -85,7 +86,39 @@ def load_assets():
 def load_model():
 	model = SentenceTransformer("clip-ViT-B-32")
 	return model
+
+
+def vector_db(img_emb_loaded, animal_embedding):
+	try:
+		client = QdrantClient("localhost")
+    		collections = client.get_collections()
+	except Exception:
+       		client = QdrantClient(":memory:")
+    		collections = client.get_collections()
+
+
+	client.recreate_collection(collection_name="animals", 
+				   vectors_config=rest.VectorParams(size=512, distance=rest.Distance.COSINE))
+
+	img_emb_loaded = img_emb_loaded.tolist()
+	animal_embedding = animal_embedding.tolist()
+	image_names = range(0,len(image_list))
 	
+	df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded), columns = ['image_name', 'image_path','embedding'])
+
+	payloads = df[['image_name', 'image_path']].fillna("Unknown").to_dict("records")
+	
+	client.upload_collection(collection_name="animals", 
+				 vectors=list(map(list, df["embedding"].tolist())),
+				 payload=payloads,
+				 ids=[uuid.uuid4().hex for _ in payloads])
+
+	results = client.search(collection_name="animals",
+				query_vector=animal_embedding,
+				with_payload=True,
+				limit=16)
+
+	return results
 ####################################################################################################################################################
 
 url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/archive.zip"
