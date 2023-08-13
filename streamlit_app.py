@@ -159,33 +159,6 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	if text_input:
 		animal_embedding = model.encode(text_input)
 	
-	# Encode the text you want to return images of.	
-	# if text_input != "":
-	# 	animal_embedding = model.encode(text_input)
-	# 	st.session_state["temp"]	
-	# #text_input = ""
-	# else:
-	# 	animal_embedding = model.encode(image_path)	
-
-	# #Encode the text you want to return images of.	
-	# if  st.sidebar.text_input != "":
-	# 	animal_embedding = model.encode(text_input)
-	# 	#animal_embedding = torch.tensor(animal_embedding)
-	# 	#st.sidebar.text_input("Input window", '', key = 'text')
-		
-	# 	##st.session_state["text"] = ""
-	# 	#clear_text()
-	# 	#st.session_state["temp"] = text_input	
-	# else:
-	# 	animal_embedding = model.encode(image_path)
-	# 	#animal_embedding = torch.tensor(animal_embedding)
-
-	#animal_embedding = model.encode("dog")
-
-	#st.sidebar.text_input("Text Search: Enter an animal's name using text", '')
-	
-	#animal_embedding = torch.tensor(animal_embedding)
-
 	animal_embedding = torch.tensor(animal_embedding)
 	number_of_images = 16
 
@@ -194,8 +167,6 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 
 	# Create a list to store the results.
 	results = []
-
-	#st.write(image_list[:5])
 
 	# Loop over the images in the most_similar_images variable.
 	for i in range(len(most_similar_images[0])):
@@ -226,8 +197,6 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 ####################################################################################################################################################
 
 if st.sidebar.button('Get Similar Images'):
-	
-
 	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 20))
 	text_input = ""
 	#text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)	
