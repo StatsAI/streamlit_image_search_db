@@ -162,6 +162,8 @@ if "text" not in st.session_state:
 
 st.session_state["text"] = st.sidebar.text_input("Input window", "")
 
+text_input = st.session_state["text"]
+
 #st.write(text_input)
 ####################################################################################################################################################
 
