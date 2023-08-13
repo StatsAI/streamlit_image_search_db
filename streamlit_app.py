@@ -132,7 +132,6 @@ st.write('')
 st.write('')
 st.title('Image Recommendation App')
 st.write("This app performs reverse image search using OpenAI's CLIP + Qdrant Vector Database")
-#st.sidebar.write('Use either option to find similar images!') 
 
 images_recs = st.sidebar.slider(label = 'Image Search: Select an animal using the slider', min_value = 1,
                           max_value = 5400,
@@ -145,7 +144,7 @@ with st.sidebar:
 	# Display an image
         st.image(image_path)
 
-text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete input to use slider)", "", key = "text")
+text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete input to use slider)", "", key = "text")	
 
 ####################################################################################################################################################
 
@@ -191,25 +190,12 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	fig.tight_layout()
 	fig.subplots_adjust(top=0.93)
 
-	#st.session_state.text_input = ""
-
-
 ####################################################################################################################################################
 
 if st.sidebar.button('Get Similar Images'):
 	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 16))
 	text_input = ""
 	st.session_state.text_input = ""
-	#st.experimental_rerun()
-	#st.session_state.something
-	#text_input = ""
-	#text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)	
-
-# if st.sidebar.button('Get Similar Images'):
-# 	if not text_input:
-# 		st.session_state.text_input = ""
-# 	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 16))
-
 
 #st.write(text_input)
 ####################################################################################################################################################	
