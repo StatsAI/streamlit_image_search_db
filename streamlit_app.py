@@ -149,7 +149,6 @@ with st.sidebar:
 
 text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete input to use slider)", "", key = "text")
 
-a = ''
 ####################################################################################################################################################
 
 #@st.cache_resource
