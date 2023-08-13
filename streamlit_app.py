@@ -96,18 +96,31 @@ def create_vector_db_input(_img_emb_loaded):
 
 	payloads = df[['image_name', 'image_path']].fillna("Unknown").to_dict("records")
 
-	return payloads, df
-
-#@st.cache_resource
-def vector_db(payloads, animal_embedding):
-	
-	#client = QdrantClient("localhost")
-	#collections = client.get_collections()
-	
 	client = QdrantClient(":memory:")
 	collections = client.get_collections()
 	
 	client.recreate_collection(collection_name="animals", vectors_config=rest.VectorParams(size=512, distance=rest.Distance.COSINE))
+
+	client.upload_collection(collection_name="animals", 
+				 vectors=list(map(list, df["embedding"].tolist())),
+				 payload=payloads,
+				 ids=[uuid.uuid4().hex for _ in payloads])
+
+
+	#return payloads, df
+
+	return client
+
+#@st.cache_resource
+def vector_db(client, animal_embedding):
+	
+	#client = QdrantClient("localhost")
+	#collections = client.get_collections()
+	
+	# client = QdrantClient(":memory:")
+	# collections = client.get_collections()
+	
+	# client.recreate_collection(collection_name="animals", vectors_config=rest.VectorParams(size=512, distance=rest.Distance.COSINE))
 
 	# img_emb_loaded = img_emb_loaded.tolist()
 	animal_embedding = animal_embedding.tolist()
@@ -117,10 +130,10 @@ def vector_db(payloads, animal_embedding):
 
 	# payloads = df[['image_name', 'image_path']].fillna("Unknown").to_dict("records")
 	
-	client.upload_collection(collection_name="animals", 
-				 vectors=list(map(list, df["embedding"].tolist())),
-				 payload=payloads,
-				 ids=[uuid.uuid4().hex for _ in payloads])
+	# client.upload_collection(collection_name="animals", 
+	# 			 vectors=list(map(list, df["embedding"].tolist())),
+	# 			 payload=payloads,
+	# 			 ids=[uuid.uuid4().hex for _ in payloads])
 
 	results = client.search(collection_name="animals",
 				query_vector=animal_embedding,
@@ -137,7 +150,7 @@ image_list, img_emb_loaded = load_assets()
 
 model = load_model()
 
-payloads, df = create_vector_db_input(img_emb_loaded)
+client = create_vector_db_input(img_emb_loaded)
 
 ####################################################################################################################################################
 
@@ -204,59 +217,59 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	animal_embedding = torch.tensor(animal_embedding)
 
 	################################################################################################################
-	# # Start of leveraging output of Qdrant	
-	# results = vector_db(payloads, animal_embedding)
+	# Start of leveraging output of Qdrant	
+	results = vector_db(client, animal_embedding)
 
-	# grid_size = math.ceil(math.sqrt(number_of_images))
-	# axes = []
-	# fig = plt.figure(figsize=(20, 15))
-        
-	# for i in range(len(results)):
-	# 	axes.append(fig.add_subplot(grid_size, grid_size, i + 1))
-	# 	plt.axis('off')
-	# 	image_name = results[i].payload['image_name']
-	# 	image_path = results[i].payload['image_path']
-	# 	image_score = results[i].score
-	# 	img = Image.open(image_path)
-	# 	img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
-	# 	plt.imshow(img_resized)
-	# #plt.title(f"Image {i}: {score}", fontsize=18)
-	# fig.tight_layout()
-	# fig.subplots_adjust(top=0.93)
-	
-	################################################################################################################
-	
-	#Start of leveraging SentenceTransformer library
-	# Find the top 10 most similar images to the bear embedding.
-	most_similar_images = util.semantic_search(query_embeddings = animal_embedding, corpus_embeddings = img_emb_loaded, top_k = number_of_images)
-
-	# Create a list to store the results.
-	results = []
-
-	# Loop over the images in the most_similar_images variable.
-	for i in range(len(most_similar_images[0])):
-		# Get the image ID and score of the current image.
-  		image_id = most_similar_images[0][i]['corpus_id']
-  		image_score = most_similar_images[0][i]['score']
-
-  		results.append([image_id, image_score])
-	
 	grid_size = math.ceil(math.sqrt(number_of_images))
 	axes = []
 	fig = plt.figure(figsize=(20, 15))
         
 	for i in range(len(results)):
-  		axes.append(fig.add_subplot(grid_size, grid_size, i + 1))
-  		plt.axis('off')
-  		image_number = results[i][0]
-  		image_name = image_list[image_number]
-  		score = results[i][1]
-  		img = Image.open(image_name)
-  		img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
-  		plt.imshow(img_resized)
+		axes.append(fig.add_subplot(grid_size, grid_size, i + 1))
+		plt.axis('off')
+		image_name = results[i].payload['image_name']
+		image_path = results[i].payload['image_path']
+		image_score = results[i].score
+		img = Image.open(image_path)
+		img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
+		plt.imshow(img_resized)
 	#plt.title(f"Image {i}: {score}", fontsize=18)
 	fig.tight_layout()
 	fig.subplots_adjust(top=0.93)
+	
+	################################################################################################################
+	
+	# #Start of leveraging SentenceTransformer library
+	# # Find the top 10 most similar images to the bear embedding.
+	# most_similar_images = util.semantic_search(query_embeddings = animal_embedding, corpus_embeddings = img_emb_loaded, top_k = number_of_images)
+
+	# # Create a list to store the results.
+	# results = []
+
+	# # Loop over the images in the most_similar_images variable.
+	# for i in range(len(most_similar_images[0])):
+	# 	# Get the image ID and score of the current image.
+ #  		image_id = most_similar_images[0][i]['corpus_id']
+ #  		image_score = most_similar_images[0][i]['score']
+
+ #  		results.append([image_id, image_score])
+	
+	# grid_size = math.ceil(math.sqrt(number_of_images))
+	# axes = []
+	# fig = plt.figure(figsize=(20, 15))
+        
+	# for i in range(len(results)):
+ #  		axes.append(fig.add_subplot(grid_size, grid_size, i + 1))
+ #  		plt.axis('off')
+ #  		image_number = results[i][0]
+ #  		image_name = image_list[image_number]
+ #  		score = results[i][1]
+ #  		img = Image.open(image_name)
+ #  		img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
+ #  		plt.imshow(img_resized)
+	# #plt.title(f"Image {i}: {score}", fontsize=18)
+	# fig.tight_layout()
+	# fig.subplots_adjust(top=0.93)
 
 ####################################################################################################################################################
 
