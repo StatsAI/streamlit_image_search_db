@@ -162,7 +162,7 @@ with st.sidebar:
 
 #text_input = st.sidebar.text_input("Input window", "")
 
-st.sidebar.text_input("Input window", "", key = "text")
+text_input = st.sidebar.text_input("Input window", "", key = "text")
 
 #text_input = st.session_state["text"]
 
