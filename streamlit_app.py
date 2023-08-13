@@ -154,15 +154,15 @@ text_input = st.sidebar.text_input("Text Search: Enter animal name ", "", key = 
 #@st.cache_resource
 def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	
-	animal_embedding = model.encode(text_input)
-	#animal_embedding = model.encode(image_path)	
+	#animal_embedding = model.encode(text_input)
+	animal_embedding = model.encode(image_path)	
 
-	if image_path != "":
-		animal_embedding = model.encode(image_path)
-		image_path = ""
+	#if image_path != "":
+	#	animal_embedding = model.encode(image_path)
+	#	image_path = ""
 	
-	# if text_input:
-		# animal_embedding = model.encode(text_input)
+	if text_input:
+		animal_embedding = model.encode(text_input)
 	
 	animal_embedding = torch.tensor(animal_embedding)
 	number_of_images = 16
@@ -203,7 +203,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 
 if st.sidebar.button('Get Similar Images'):
 	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 20))
-	text_input = ""
+	#text_input = ""
 	#text_input = st.sidebar.text_input("Input window", "", key = "text", on_change=clear_input_box)	
 	
 
