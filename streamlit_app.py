@@ -89,7 +89,7 @@ def load_model():
 
 @st.cache_resource
 def create_vector_db_input(_img_emb_loaded):
-	img_emb_loaded = img_emb_loaded.tolist()
+	img_emb_loaded = _img_emb_loaded.tolist()
 	image_names = range(0,len(image_list))
 
 	df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded), columns = ['image_name', 'image_path','embedding'])
