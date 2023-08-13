@@ -96,7 +96,7 @@ def create_vector_db_input(img_emb_loaded):
 
 	payloads = df[['image_name', 'image_path']].fillna("Unknown").to_dict("records")
 
-	return payloads
+	return payloads, df
 
 
 def vector_db(payloads, animal_embedding):
@@ -137,7 +137,7 @@ image_list, img_emb_loaded = load_assets()
 
 model = load_model()
 
-payloads = create_vector_db_input(img_emb_loaded)
+payloads, df = create_vector_db_input(img_emb_loaded)
 
 ####################################################################################################################################################
 
