@@ -145,18 +145,7 @@ with st.sidebar:
 	# Display an image
         st.image(image_path)
 
-#text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete input to use slider)", "", key = "text")
-
-if 'something' not in st.session_state:
-    st.session_state.something = ''
-
-def submit():
-    st.session_state.something = st.session_state.widget
-    st.session_state.widget = ''
-
-text_input = st.sidebar.text_input("Text Search: Enter animal", key='widget', on_change=submit)
-
-#st.write(f'Last submission: {st.session_state.something}')
+text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete input to use slider)", "", key = "text")
 
 ####################################################################################################################################################
 
