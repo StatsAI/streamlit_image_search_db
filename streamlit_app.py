@@ -90,7 +90,10 @@ def load_model():
 
 def vector_db(img_emb_loaded, animal_embedding):
 	
-	client = QdrantClient("localhost")
+	#client = QdrantClient("localhost")
+	#collections = client.get_collections()
+	
+	client = QdrantClient(":memory:")
 	collections = client.get_collections()
 	
 	client.recreate_collection(collection_name="animals", vectors_config=rest.VectorParams(size=512, distance=rest.Distance.COSINE))
