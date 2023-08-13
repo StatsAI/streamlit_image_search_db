@@ -180,7 +180,7 @@ def plot_similar_images_new(image_path: str, number_of_images: int = 6):
 	if text_input != "":
 		animal_embedding = model.encode(text_input)
 		animal_embedding = torch.tensor(animal_embedding)
-		text_input = st.sidebar.text_input("Input window", '')
+		st.sidebar.text_input("Input window", '')
 		
 		##st.session_state["text"] = ""
 		#clear_text()
