@@ -109,8 +109,10 @@ def create_vector_db_input(_img_emb_loaded):
 	# 			 ids=[uuid.uuid4().hex for _ in payloads])
 
 	client = QdrantClient(
-		url="https://92433a73-8bdc-4b38-9c70-a256b8bab050.us-east4-0.gcp.cloud.qdrant.io:6333", 
-		api_key="XwHGDKXRl6U8hOpElp51UgH-O6pChEPj7OiQfyxfhAwoBMQF4m_Ceg",)
+		url = st.secrets["url"]
+		#url="https://92433a73-8bdc-4b38-9c70-a256b8bab050.us-east4-0.gcp.cloud.qdrant.io:6333", 
+		api_key = st.secrets["api_key"],)
+		# api_key="XwHGDKXRl6U8hOpElp51UgH-O6pChEPj7OiQfyxfhAwoBMQF4m_Ceg",)
 	
 	return client
 
