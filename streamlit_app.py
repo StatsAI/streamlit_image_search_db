@@ -98,15 +98,19 @@ def create_vector_db_input(_img_emb_loaded):
 
 	payloads = df[['image_name', 'image_path']].fillna("Unknown").to_dict("records")
 
-	client = QdrantClient(":memory:")
+	#client = QdrantClient(":memory:")
 	collections = client.get_collections()
 	
-	client.recreate_collection(collection_name="animals", vectors_config=rest.VectorParams(size=512, distance=rest.Distance.COSINE))
+	#client.recreate_collection(collection_name="animals", vectors_config=rest.VectorParams(size=512, distance=rest.Distance.COSINE))
 
-	client.upload_collection(collection_name="animals", 
-				 vectors=list(map(list, df["embedding"].tolist())),
-				 payload=payloads,
-				 ids=[uuid.uuid4().hex for _ in payloads])
+	# client.upload_collection(collection_name="animals", 
+	# 			 vectors=list(map(list, df["embedding"].tolist())),
+	# 			 payload=payloads,
+	# 			 ids=[uuid.uuid4().hex for _ in payloads])
+
+	client = QdrantClient(
+		url="https://92433a73-8bdc-4b38-9c70-a256b8bab050.us-east4-0.gcp.cloud.qdrant.io:6333", 
+		api_key="XwHGDKXRl6U8hOpElp51UgH-O6pChEPj7OiQfyxfhAwoBMQF4m_Ceg",)
 
 	return client
 
