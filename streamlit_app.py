@@ -154,9 +154,6 @@ logo = Image.open('images/picture.png')
 st.markdown(
     """
     <style>
-        [data-testid=stSidebar] {
-            padding-top: 0;  # Remove default padding
-        }
         [data-testid=stSidebar] [data-testid=stImage] {
             text-align: center;
             display: block;
