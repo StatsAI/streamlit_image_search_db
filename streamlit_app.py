@@ -148,8 +148,8 @@ client = create_vector_db_input(img_emb_loaded)
 ####################################################################################################################################################
 
 logo = Image.open('images/picture.png')
-#newsize = (95, 95)
-#logo = logo.resize(newsize)
+newsize = (95, 95)
+logo = logo.resize(newsize)
 
 st.markdown(
     """
