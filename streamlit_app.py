@@ -183,8 +183,6 @@ st.write('')
 st.title("Reverse Image Search via OpenAI's CLIP + Qdrant Vector Database")
 #st.write("This app performs reverse image search using OpenAI's CLIP + Qdrant Vector Database")
 
-st.sidebar.write('')
-
 images_recs = st.sidebar.slider(label = 'Image Search: Select an animal using the slider', min_value = 1,
                           max_value = 5400,
                           value = 1859,
@@ -194,6 +192,7 @@ image_path = image_list[images_recs - 1]
 
 with st.sidebar:
 	# Display an image
+	st.write('')
         st.image(image_path)
 
 #st.sidebar.write('')
