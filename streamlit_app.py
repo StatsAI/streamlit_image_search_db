@@ -211,7 +211,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 
 	################################################################################################################
 	# Start of leveraging output of Qdrant	
-	results = vector_db(client, payloads, animal_embedding)
+	results = vector_db(client, animal_embedding)
 
 	grid_size = math.ceil(math.sqrt(number_of_images))
 	axes = []
