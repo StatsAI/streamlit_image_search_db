@@ -206,11 +206,18 @@ with st.sidebar:
         #st.image(image_path).resize(newsize)
 	st.image(image_path_image)
 
-#st.sidebar.write('')
-text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
-#st.sidebar.write('')
+def custom_text_input(label, key, height=30):
+    return st.container(
+        st.text_input(label, key=key), height=height, style={"height": f"{height}px"}
+    )
 
-openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
+with st.sidebar:
+    text_input = custom_text_input(Text Search: Enter animal. (Delete to use slider)", "", key = "text")
+
+#text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
+
+
+#openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
 
 ####################################################################################################################################################
 
