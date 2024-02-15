@@ -212,6 +212,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	################################################################################################################
 	# Start of leveraging output of Qdrant	
 	results = vector_db(client, animal_embedding)
+	results = results[1:]
 
 	result_image_type = results[0].payload['type']
 	result_str = "The animal you selected is a " + result_image_type	
@@ -272,7 +273,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 ####################################################################################################################################################
 
 if st.sidebar.button('Get Similar Images'):
-	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 16))
+	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 17))
 	text_input = ""
 	st.session_state.text_input = ""
 
