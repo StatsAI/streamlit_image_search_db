@@ -196,11 +196,11 @@ st.sidebar.write('')
 st.sidebar.write('')
 
 newsize = (150, 150)
-image_path = image_path.resize(newsize)
+#image_path = image_pathcc
 
 with st.sidebar:
 	# Display an image	
-        st.image(image_path)
+        st.image(image_path).resize(newsize)
 
 #st.sidebar.write('')
 text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
