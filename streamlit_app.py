@@ -206,13 +206,16 @@ with st.sidebar:
         #st.image(image_path).resize(newsize)
 	st.image(image_path_image)
 
-def custom_text_input(label, key, height=30):
-    return st.container(
-        st.text_input(label, key=key), height=height, style={"height": f"{height}px"}
-    )
-
 with st.sidebar:
-    text_input = custom_text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
+    st.markdown("""
+        <style>
+            [data-testid=stTextInput] {
+                height: 30px;  # Adjust the height as needed
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
+    text_input = st.text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
 
 #text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
 
