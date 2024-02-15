@@ -198,8 +198,8 @@ image_path_image = Image.open(image_path)
 
 st.sidebar.write('')
 st.sidebar.write('')
-st.sidebar.write('')
-st.sidebar.write('')
+#st.sidebar.write('')
+#st.sidebar.write('')
 
 with st.sidebar:
 	# Display an image	
