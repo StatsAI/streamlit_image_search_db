@@ -261,7 +261,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	results = results[1:]
 
 	result_image_type = results[0].payload['type'].capitalize()
-	result_str = "You selected the following animal: " + result_image_type + ". Enter an OpenAI API Key for a summary!"	
+	result_str = "You selected the following animal: " + result_image_type + "."	
 	
 	if openai_api_key != "":		
 		llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
@@ -270,7 +270,8 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 		st.write(response)
 		#st.write("You selected the following animal: " + result_image_type + ". " + response)
 	else:
-		st.write(result_str)	
+		st.write(result_str)
+		st.write("Enter an OpenAI API Key to learn more about " + result_str + 's!')
 
 	grid_size = math.ceil(math.sqrt(number_of_images))
 	axes = []
