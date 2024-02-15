@@ -161,7 +161,7 @@ st.markdown(
             margin-right: auto;
 	    margin-top: -75px;
             width: 100%;
-	         		
+	    margin: 0;	         		
         }
     </style>
     """, unsafe_allow_html=True
