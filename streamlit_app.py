@@ -154,16 +154,18 @@ logo = Image.open('images/picture.png')
 st.markdown(
     """
     <style>
+        .reportview-container .sidebar .sidebar-content {
+            padding-top: 0;
+        }
+
         [data-testid=stSidebar] [data-testid=stImage] {
             text-align: center;
             display: block;
             margin-left: auto;
             margin-right: auto;
-	    margin_top: -50px;
             width: 100%;
-        }
-        [data-testid=stSlider] {
-            margin-top: 0;  # Remove default margin on slider
+            /* Reduce top margin if needed based on logo size */
+            margin-top: -10px;
         }
     </style>
     """,
