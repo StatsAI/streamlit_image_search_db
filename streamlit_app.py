@@ -159,7 +159,7 @@ st.markdown(
             display: block;
             margin-left: auto;
             margin-right: auto;
-	    margin-top: auto;
+	    margin-top: 0;
             width: 100%;
 	         		
         }
