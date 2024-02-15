@@ -178,8 +178,8 @@ st.markdown("""
         </style>
         """, unsafe_allow_html=True)
 
-st.write('')
-st.write('')
+#st.write('')
+#st.write('')
 st.title("Reverse Image Search via OpenAI's CLIP + Qdrant Vector Database")
 #st.write("This app performs reverse image search using OpenAI's CLIP + Qdrant Vector Database")
 
