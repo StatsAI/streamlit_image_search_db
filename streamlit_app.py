@@ -182,7 +182,7 @@ st.markdown(
             padding-top: 0;
         }
 
-        [data-testid=stImage] {
+        [data-testid=stSidebar] {
             text-align: center;
             display: block;
             margin-left: auto;
