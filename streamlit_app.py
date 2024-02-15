@@ -190,8 +190,11 @@ images_recs = st.sidebar.slider(label = 'Image Search: Select an animal using th
 
 image_path = image_list[images_recs - 1]
 image_path_image = Image.open(image_path)
-newsize = (150, 150)
-image_path_image = image_path_image.resize(newsize) 
+
+resize_factor = 0.5  # Adjust this value for your desired percentage (e.g., 0.5 for 50% size)
+new_width = int(image_path_image.width * resize_factor)
+new_height = int(image_path_image.height * resize_factor)
+image_path_image = image_path_image .resize((new_width, new_height))
 
 st.sidebar.write('')
 st.sidebar.write('')
