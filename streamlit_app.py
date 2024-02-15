@@ -124,7 +124,7 @@ def create_vector_db_input(_img_emb_loaded):
 	return client
 
 #@st.cache_resource
-def vector_db(client, payloads, animal_embedding):
+def vector_db(client, animal_embedding):
 
 	animal_embedding = animal_embedding.tolist()
 	
