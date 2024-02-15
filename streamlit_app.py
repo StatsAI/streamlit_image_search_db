@@ -210,7 +210,7 @@ with st.sidebar:
 text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
 #st.sidebar.write('')
 
-#openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
+openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
 
 ####################################################################################################################################################
 
