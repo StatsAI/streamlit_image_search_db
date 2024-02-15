@@ -154,40 +154,21 @@ logo = Image.open('images/picture.png')
 st.markdown(
     """
     <style>
-        [data-testid=stImage] {
+        [data-testid=stSidebar] [data-testid=stImage]{
             text-align: center;
             display: block;
             margin-left: auto;
             margin-right: auto;
+	    margin-top: -20;
             width: 100%;
-            /* Reduce top margin if needed based on logo size */
-            margin-top: -50px;
+	         		
         }
     </style>
-    """,
-    unsafe_allow_html=True
+    """, unsafe_allow_html=True
 )
 
 with st.sidebar:
     st.image(logo)
-
-st.markdown(
-    """
-    <style>
-         [data-testid=stSidebar] {
-            text-align: center;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 100%;
-            /* Reduce top margin if needed based on logo size */
-            margin-top: 0;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 
 st.markdown("""
         <style>
