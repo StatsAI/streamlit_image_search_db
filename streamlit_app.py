@@ -175,6 +175,28 @@ st.markdown(
 with st.sidebar:
     st.image(logo)
 
+st.markdown(
+    """
+    <style>
+        .reportview-container .sidebar .sidebar-content {
+            padding-top: 0;
+        }
+
+        [data-testid=stImage] {
+            text-align: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            /* Reduce top margin if needed based on logo size */
+            margin-top: 0;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 st.markdown("""
         <style>
                .block-container {
