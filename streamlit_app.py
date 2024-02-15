@@ -222,6 +222,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 		plt.axis('off')
 		image_name = results[i].payload['image_name']
 		image_path = results[i].payload['image_path']
+		image_type = results[i].payload['image_type']
 		image_score = results[i].score
 		img = Image.open(image_path)
 		img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
