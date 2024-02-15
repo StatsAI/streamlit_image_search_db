@@ -212,7 +212,7 @@ def custom_text_input(label, key, height=30):
     )
 
 with st.sidebar:
-    text_input = custom_text_input("Text Search: Enter animal. (Delete to use slider)", key = "text")
+    text_input = custom_text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
 
 #text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
 
