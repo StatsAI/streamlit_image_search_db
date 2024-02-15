@@ -198,8 +198,8 @@ image_path_image = Image.open(image_path)
 
 st.sidebar.write('')
 st.sidebar.write('')
-#st.sidebar.write('')
-#st.sidebar.write('')
+st.sidebar.write('')
+st.sidebar.write('')
 
 with st.sidebar:
 	# Display an image	
@@ -210,7 +210,7 @@ with st.sidebar:
     st.markdown("""
         <style>
             [data-testid=stTextInput] {
-                height: 30px;  # Adjust the height as needed
+                height: 10px;  # Adjust the height as needed
             }
         </style>
     """, unsafe_allow_html=True)
