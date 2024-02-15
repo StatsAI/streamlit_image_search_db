@@ -206,6 +206,23 @@ with st.sidebar:
         #st.image(image_path).resize(newsize)
 	st.image(image_path_image)
 
+
+st.markdown(
+    """
+    <style>
+        [data-testid=stSidebar]{
+            text-align: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+	    margin-top: -75px;
+            width: 100%;
+	    #margin: 0;	         		
+        }
+    </style>
+    """, unsafe_allow_html=True
+)
+
 with st.sidebar:
     st.markdown("""
         <style>
