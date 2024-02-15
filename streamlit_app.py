@@ -267,7 +267,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 		llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
 		input_text = "Summarize in 100 words, the most interesting things about the following animal: " + result_str
 		response = llm(input_text)
-		st.write(You selected the following animal: " + result_image_type + ". " + response)
+		st.write("You selected the following animal: " + result_image_type + ". " + response)
 	else:
 		st.write(result_str)	
 
