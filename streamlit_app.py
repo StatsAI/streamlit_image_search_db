@@ -210,7 +210,7 @@ with st.sidebar:
     st.markdown("""
         <style>
             [data-testid=stTextInput] {
-                height: 5px;  # Adjust the height as needed
+                height: 0px;  # Adjust the height as needed
             }
         </style>
     """, unsafe_allow_html=True)
