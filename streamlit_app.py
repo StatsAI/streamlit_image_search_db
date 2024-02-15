@@ -234,6 +234,8 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
     text_input = st.text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
+    openai_api_key = st.text_input('OpenAI API Key', type='password')
+
 
 #text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
 
