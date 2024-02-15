@@ -158,7 +158,7 @@ st.markdown(
             padding-top: 0;
         }
 
-        [data-testid=stSidebar] [data-testid=stImage] {
+        [data-testid=stImage] {
             text-align: center;
             display: block;
             margin-left: auto;
