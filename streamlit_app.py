@@ -260,14 +260,25 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	results = vector_db(client, animal_embedding)
 	results = results[1:]
 
-	result_image_type = results[0].payload['type']
-	result_str = "The animal you selected is a " + result_image_type	
-	#st.write(result_str)
+	# result_image_type = results[0].payload['type']
+	# result_str = "The animal you selected is a " + result_image_type	
+	# #st.write(result_str)
 
-	llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
-	input_text = "Summarize in 100 words, the most interesting things about the following animal: " + result_str
-	response = llm(input_text)
-	st.write(result_str + ". " + response)	
+	# llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
+	# input_text = "Summarize in 100 words, the most interesting things about the following animal: " + result_str
+	# response = llm(input_text)
+	# st.write(result_str + ". " + response)
+
+	result_image_type = results[0].payload['type']
+	result_str = "The animal you selected is a " + result_image_type + ". Enter an OpenAI API Key to learn more!"	
+	
+	if openai_api_key != "":		
+		llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
+		input_text = "Summarize in 100 words, the most interesting things about the following animal: " + result_str
+		response = llm(input_text)
+		st.write(result_str + ". " + response)
+	else:
+		st.write(result_str)	
 
 	grid_size = math.ceil(math.sqrt(number_of_images))
 	axes = []
