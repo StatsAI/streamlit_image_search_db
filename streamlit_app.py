@@ -98,9 +98,12 @@ def create_vector_db_input(_img_emb_loaded):
 	img_emb_loaded = _img_emb_loaded.tolist()
 	image_names = range(0,len(image_list))
 
-	df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded), columns = ['image_name', 'image_path','embedding'])
+	#df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded), columns = ['image_name', 'image_path','embedding'])
 
-	payloads = df[['image_name', 'image_path']].fillna("Unknown").to_dict("records")
+	df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded, img_type), columns = ['image_name', 'image_path','embedding', 'type'])
+
+	#payloads = df[['image_name', 'image_path']].fillna("Unknown").to_dict("records")
+	payloads = df[['image_name', 'image_path', 'type']].fillna("Unknown").to_dict("records")
 
 	#client = QdrantClient(":memory:")
 	#collections = client.get_collections()
@@ -118,16 +121,17 @@ def create_vector_db_input(_img_emb_loaded):
 		,)
 
 	
-	return client
+	return client, payloads
 
 #@st.cache_resource
-def vector_db(client, animal_embedding):
+def vector_db(client, payloads, animal_embedding):
 
 	animal_embedding = animal_embedding.tolist()
 	
 	results = client.search(collection_name="animals",
 				query_vector=animal_embedding,
-				with_payload=True,
+				#with_payload=True,
+				payload = payloads,
 				limit=16)
 
 	return results
@@ -140,7 +144,7 @@ image_list, img_emb_loaded, img_type = load_assets()
 
 model = load_model()
 
-client = create_vector_db_input(img_emb_loaded)
+client, payloads = create_vector_db_input(img_emb_loaded)
 
 ####################################################################################################################################################
 
@@ -208,7 +212,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 
 	################################################################################################################
 	# Start of leveraging output of Qdrant	
-	results = vector_db(client, animal_embedding)
+	results = vector_db(client, payloads, animal_embedding)
 
 	grid_size = math.ceil(math.sqrt(number_of_images))
 	axes = []
