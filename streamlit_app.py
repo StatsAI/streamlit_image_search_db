@@ -165,7 +165,7 @@ st.markdown(
             margin-right: auto;
             width: 100%;
             /* Reduce top margin if needed based on logo size */
-            margin-top: -30px;
+            margin-top: -50px;
         }
     </style>
     """,
