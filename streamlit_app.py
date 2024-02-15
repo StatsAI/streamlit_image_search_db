@@ -154,10 +154,6 @@ logo = Image.open('images/picture.png')
 st.markdown(
     """
     <style>
-        .reportview-container .sidebar .sidebar-content {
-            padding-top: 0;
-        }
-
         [data-testid=stImage] {
             text-align: center;
             display: block;
@@ -178,11 +174,7 @@ with st.sidebar:
 st.markdown(
     """
     <style>
-        .reportview-container .sidebar .sidebar-content {
-            padding-top: 0;
-        }
-
-        [data-testid=stSidebar] {
+         [data-testid=stSidebar] {
             text-align: center;
             display: block;
             margin-left: auto;
