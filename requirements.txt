@@ -16,3 +16,8 @@ torchvision==0.15.2
 sentence-transformers
 qdrant_client==1.3.0 
 pyarrow
+openai
+langchain 
+cohere 
+tiktoken 
+langchain-openai
