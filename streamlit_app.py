@@ -271,7 +271,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 		#st.write("You selected the following animal: " + result_image_type + ". " + response)
 	else:
 		st.write(result_str  + ".")
-		st.write("Enter an OpenAI API Key to learn more about " + result_str + 's!')
+		st.write("Enter an OpenAI API Key to learn more about " + result_image_type + 's!')
 
 	grid_size = math.ceil(math.sqrt(number_of_images))
 	axes = []
