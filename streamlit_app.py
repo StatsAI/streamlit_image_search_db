@@ -191,6 +191,12 @@ images_recs = st.sidebar.slider(label = 'Image Search: Select an animal using th
 image_path = image_list[images_recs - 1]
 
 st.sidebar.write('')
+st.sidebar.write('')
+st.sidebar.write('')
+st.sidebar.write('')
+
+#newsize = (150, 150)
+#imag_path = image_path.resize(newsize)
 
 with st.sidebar:
 	# Display an image	
