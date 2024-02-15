@@ -189,18 +189,19 @@ images_recs = st.sidebar.slider(label = 'Image Search: Select an animal using th
                           step = 1)
 
 image_path = image_list[images_recs - 1]
-
-st.sidebar.write('')
-st.sidebar.write('')
-st.sidebar.write('')
-st.sidebar.write('')
-
+image_path_image = Image.open(image_path)
 newsize = (150, 150)
-#image_path = image_pathcc
+image_path_image = image_path_image.resize(newsize) 
+
+st.sidebar.write('')
+st.sidebar.write('')
+st.sidebar.write('')
+st.sidebar.write('')
 
 with st.sidebar:
 	# Display an image	
-        st.image(image_path).resize(newsize)
+        #st.image(image_path).resize(newsize)
+	st.image(image_path_image)
 
 #st.sidebar.write('')
 text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
