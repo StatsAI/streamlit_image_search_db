@@ -159,10 +159,10 @@ st.markdown(
             display: block;
             margin-left: auto;
             margin-right: auto;
-            width: 100%;
+            #width: 100%;
 	    margin-top: -75px;
-	    margin: 0;
-	    padding-top: 0;     		
+	    #margin: 0;
+	    #padding-top: 0;     		
         }
     </style>
     """, unsafe_allow_html=True
