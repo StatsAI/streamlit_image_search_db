@@ -170,6 +170,7 @@ st.markdown(
 with st.sidebar:
     st.image(logo)
 
+st.sidebar.write('')
 
 st.markdown("""
         <style>
