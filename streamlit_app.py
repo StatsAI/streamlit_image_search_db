@@ -194,7 +194,8 @@ with st.sidebar:
 	# Display an image
         st.image(image_path)
 
-text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete input to use slider)", "", key = "text")	
+text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete input to use slider)", "", key = "text")
+openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
 
 ####################################################################################################################################################
 
@@ -216,7 +217,12 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 
 	result_image_type = results[0].payload['type']
 	result_str = "The animal you selected is a " + result_image_type	
-	st.write(result_str)
+	#st.write(result_str)
+
+	llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
+	input_text = "Summarize in 100 words, the most interesting things about the following animal: " + result_str
+	response = llm(input_text)
+	st.write(result_str + ". " + response)	
 
 	grid_size = math.ceil(math.sqrt(number_of_images))
 	axes = []
