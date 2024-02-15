@@ -100,10 +100,10 @@ def create_vector_db_input(_img_emb_loaded):
 
 	#df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded), columns = ['image_name', 'image_path','embedding'])
 
-	df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded, img_type), columns = ['image_name', 'image_path','embedding', 'type'])
+	#df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded, img_type), columns = ['image_name', 'image_path','embedding', 'type'])
 
 	#payloads = df[['image_name', 'image_path']].fillna("Unknown").to_dict("records")
-	payloads = df[['image_name', 'image_path', 'type']].fillna("Unknown").to_dict("records")
+	#payloads = df[['image_name', 'image_path', 'type']].fillna("Unknown").to_dict("records")
 
 	#client = QdrantClient(":memory:")
 	#collections = client.get_collections()
@@ -121,7 +121,7 @@ def create_vector_db_input(_img_emb_loaded):
 		,)
 
 	
-	return client, payloads
+	return client
 
 #@st.cache_resource
 def vector_db(client, payloads, animal_embedding):
@@ -130,8 +130,7 @@ def vector_db(client, payloads, animal_embedding):
 	
 	results = client.search(collection_name="animals",
 				query_vector=animal_embedding,
-				#with_payload=True,
-				payload = payloads,
+				with_payload=True,
 				limit=16)
 
 	return results
@@ -144,7 +143,7 @@ image_list, img_emb_loaded, img_type = load_assets()
 
 model = load_model()
 
-client, payloads = create_vector_db_input(img_emb_loaded)
+client = create_vector_db_input(img_emb_loaded)
 
 ####################################################################################################################################################
 
