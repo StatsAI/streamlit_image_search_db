@@ -17,7 +17,7 @@ import requests
 import zipfile
 import json
 
-import pandas as pd
+from langchain_openai import OpenAI
 from typing import List
 from sentence_transformers import SentenceTransformer, util
 
