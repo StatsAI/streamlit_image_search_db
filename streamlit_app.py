@@ -260,7 +260,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	results = vector_db(client, animal_embedding)
 	results = results[1:]
 
-	result_image_type = results[0].payload['type']
+	result_image_type = results[0].payload['type'].capitalize()
 	result_str = "You selected the following animal: " + result_image_type + ". Enter an OpenAI API Key for a summary!"	
 	
 	if openai_api_key != "":		
