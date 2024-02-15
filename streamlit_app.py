@@ -159,7 +159,7 @@ st.markdown(
             display: block;
             margin-left: auto;
             margin-right: auto;
-	    margin-top:-50px;
+	    margin-top: auto;
             width: 100%;
 	         		
         }
@@ -194,7 +194,7 @@ with st.sidebar:
 	# Display an image
         st.image(image_path)
 
-st.sidebar.write('')
+#st.sidebar.write('')
 text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete input to use slider)", "", key = "text")
 #st.sidebar.write('')
 
