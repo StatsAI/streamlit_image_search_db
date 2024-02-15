@@ -160,7 +160,8 @@ st.markdown(
             margin-left: auto;
             margin-right: auto;
             width: 100%;
-	    padding-top: 0;
+	    margin: 0;
+	    padding-top: 0;     		
         }
     </style>
     """, unsafe_allow_html=True
