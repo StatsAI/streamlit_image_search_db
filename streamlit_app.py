@@ -162,9 +162,6 @@ st.markdown(
 	    margin_top: -50px;
             width: 100%;
         }
-        .block-container {
-            padding-top: 0;  # Remove default padding
-        }
         [data-testid=stSlider] {
             margin-top: 0;  # Remove default margin on slider
         }
