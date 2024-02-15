@@ -264,7 +264,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	result_str = "You selected the following animal: " + result_image_type + ". Enter an OpenAI API Key for a summary!"	
 	
 	if openai_api_key != "":		
-		llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key, model = 'gpt-3.5-turbo-0125')
+		llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
 		input_text = "Summarize in 100 words, the most interesting things about the following animal: " + result_str
 		response = llm(input_text)
 		st.write(response)
