@@ -160,6 +160,7 @@ st.markdown(
             margin-left: auto;
             margin-right: auto;
             width: 100%;
+	    margin-top: -75px;
 	    margin: 0;
 	    padding-top: 0;     		
         }
