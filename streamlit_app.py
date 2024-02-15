@@ -162,6 +162,7 @@ st.markdown(
             display: block;
             margin-left: auto;
             margin-right: auto;
+	    margin_top: -50px;
             width: 100%;
         }
         .block-container {
