@@ -170,8 +170,6 @@ st.markdown(
 with st.sidebar:
     st.image(logo)
 
-st.sidebar.write('')
-
 st.markdown("""
         <style>
                .block-container {
@@ -197,6 +195,8 @@ with st.sidebar:
         st.image(image_path)
 
 text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete input to use slider)", "", key = "text")
+st.sidebar.write('')
+
 #openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
 
 ####################################################################################################################################################
