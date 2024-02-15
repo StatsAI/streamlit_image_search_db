@@ -154,17 +154,25 @@ logo = Image.open('images/picture.png')
 st.markdown(
     """
     <style>
-        [data-testid=stSidebar] [data-testid=stImage]{
+        [data-testid=stSidebar] {
+            padding-top: 0;  # Remove default padding
+        }
+        [data-testid=stSidebar] [data-testid=stImage] {
             text-align: center;
             display: block;
             margin-left: auto;
             margin-right: auto;
-	    margin-top: 0;
             width: 100%;
-	         		
+        }
+        .block-container {
+            padding-top: 0;  # Remove default padding
+        }
+        [data-testid=stSlider] {
+            margin-top: 0;  # Remove default margin on slider
         }
     </style>
-    """, unsafe_allow_html=True
+    """,
+    unsafe_allow_html=True
 )
 
 with st.sidebar:
