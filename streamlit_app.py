@@ -159,7 +159,7 @@ st.markdown(
             display: block;
             margin-left: auto;
             margin-right: auto;
-	    margin-top: -20;
+	    margin-top: -50;
             width: 100%;
 	         		
         }
@@ -182,6 +182,8 @@ st.write('')
 st.write('')
 st.title("Reverse Image Search via OpenAI's CLIP + Qdrant Vector Database")
 #st.write("This app performs reverse image search using OpenAI's CLIP + Qdrant Vector Database")
+
+st.sidebar.write('')
 
 images_recs = st.sidebar.slider(label = 'Image Search: Select an animal using the slider', min_value = 1,
                           max_value = 5400,
