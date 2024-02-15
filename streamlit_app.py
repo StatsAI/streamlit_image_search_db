@@ -197,7 +197,7 @@ with st.sidebar:
         st.image(image_path)
 
 text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete input to use slider)", "", key = "text")
-openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
+#openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
 
 ####################################################################################################################################################
 
