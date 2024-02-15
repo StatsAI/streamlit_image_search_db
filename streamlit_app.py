@@ -66,9 +66,13 @@ def load_embeddings():
 	img_dict = json.loads(file_content)
 	
 	img_list = list(img_dict.keys())
-	img_emb = list(img_dict.values())
+	#img_emb = list(img_dict.values())
+
+	img_values = list(img_dict.values())
+	img_emb= [value[0] for value in img_values]
+	img_type = [value[1] for value in img_values]
 		
-	return img_list, img_emb
+	return img_list, img_emb, img_type
 
 
 ## Load Pre-trained Assets
@@ -78,10 +82,10 @@ def load_assets():
 	#image_list = load_data(['animals'])
 
 	# Load indexed images
-	image_list, img_emb_loaded = load_embeddings()
+	image_list, img_emb_loaded, img_type = load_embeddings()
 	img_emb_loaded = torch.tensor(img_emb_loaded)
 
-	return image_list, img_emb_loaded
+	return image_list, img_emb_loaded, img_type
 
 # Set up the search engine
 @st.cache_resource
@@ -132,7 +136,7 @@ def vector_db(client, animal_embedding):
 url = "https://github.com/StatsAI/streamlit_image_search_db/releases/download/image_search_assets/archive.zip"
 download_and_unzip(url)
 
-image_list, img_emb_loaded = load_assets()
+image_list, img_emb_loaded, img_type = load_assets()
 
 model = load_model()
 
