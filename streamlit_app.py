@@ -190,9 +190,10 @@ images_recs = st.sidebar.slider(label = 'Image Search: Select an animal using th
 
 image_path = image_list[images_recs - 1]
 
+st.sidebar.write('')
+
 with st.sidebar:
-	# Display an image
-	st.write('')
+	# Display an image	
         st.image(image_path)
 
 #st.sidebar.write('')
