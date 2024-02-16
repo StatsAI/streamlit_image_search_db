@@ -1,5 +1,7 @@
 # Try the app! https://appimagesearchdb-bghvgku4fhakucrz2xeeum.streamlit.app/
 
+# What it does: Reverse Image Search via OpenAI + CLIP + Qdrant Vector Database
+
 # How it works: 
 ## Step 0: Embeddings of 5,000 animals are created using Google colab and uploaded to Qdrant Cloud Vector Database. 
 ## Step 1: The user selects an animal image or enters its name in the textbox. 
