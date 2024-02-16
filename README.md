@@ -1,8 +1,8 @@
 # Try the app! https://appimagesearchdb-bghvgku4fhakucrz2xeeum.streamlit.app/
 
 # How it works!: 
-# 0. Embeddings of 5,000 animals are created using Google colab and uploaded to Qdrant Cloud Vector Database. 
-# 1. The user selects an animal image or enters its name in the textbox. 
+## 0. Embeddings of 5,000 animals are created using Google colab and uploaded to Qdrant Cloud Vector Database. 
+## 1. The user selects an animal image or enters its name in the textbox. 
 # 2. The user enters an OpenAI API Key or leaves it blank. 
 # 3. The image or text is then transformed into a query embedding. 
 # 4. The query embedding is used to perform a nearest neighbors similiarty search in Qdrant.
