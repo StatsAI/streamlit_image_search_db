@@ -8,7 +8,7 @@
 ## Step 4: The query embedding is used to perform a nearest neighbors similarity search in Qdrant.
 ## Step 5: The animal type is determined via the payload of the first returned result from Qdrant.  
 ## Step 6: The images returned are pulled via Qdrant payload (image link) + Github (image storage).
-## Step 7: If the user entered an OpenAI API Key, then the output of Step 5 is passed to OpenAI for a animal summary. 
+## Step 7: If the user entered an OpenAI API Key, then the output of Step 5 is passed to OpenAI for an animal summary. 
 
 # Feature 1: Text to Image Search!
 
