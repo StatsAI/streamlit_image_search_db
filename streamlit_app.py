@@ -163,7 +163,7 @@ st.markdown("""
 
 #st.write('')
 #st.write('')
-st.title("Reverse Image Search via OpenAI CLIP + Qdrant Vector Database + LLM")
+st.title("Reverse Image Search via Vector Database + LLM Summary")
 #st.write("This app performs reverse image search using OpenAI's CLIP + Qdrant Vector Database")
 
 images_recs = st.sidebar.slider(label = 'Image Search: Select an animal using the slider', min_value = 1,
