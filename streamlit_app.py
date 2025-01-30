@@ -225,7 +225,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 
 		llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0, max_tokens=None, timeout=None, max_retries=2, google_api_key=openai_api_key)
 		input_text = "Summarize in 100 words, the most interesting things about the following animal: " + result_str
-		response = llm(input_text)
+		response = llm.invoke(input_text)
 		st.write(response.content)
 
 	else:
