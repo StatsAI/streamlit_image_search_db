@@ -19,6 +19,9 @@ import json
 
 from langchain_openai import OpenAI
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_ollama.llms import OllamaLLM
+
 from typing import List
 from sentence_transformers import SentenceTransformer, util
 
