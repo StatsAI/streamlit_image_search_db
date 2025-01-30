@@ -18,5 +18,5 @@ tiktoken==0.6.0
 langchain-openai==0.0.6
 #langchain-openai
 langchain==0.1.7
-langchain-google-genai==1.0.3
+langchain-google-genai
 #langchain-ollama==0.2.2
