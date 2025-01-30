@@ -1,16 +1,16 @@
 # Try the app! https://appimagesearchdb-bghvgku4fhakucrz2xeeum.streamlit.app/
 
-# What it does: Reverse Image Search via OpenAI + CLIP + Qdrant Vector Database
+# What it does: Reverse Image Search via CLIP + Vector Database + LLM Summary
 
 # How it works: 
 ## Step 0: Embeddings of 5,000 animals are created using Google colab and uploaded to Qdrant Cloud Vector Database. 
 ## Step 1: The user selects an animal image or enters its name in the textbox. 
-## Step 2: The user enters an OpenAI API Key or leaves it blank. 
+## Step 2: The user enters an Gemini or OpenAI API Key or leaves it blank. 
 ## Step 3: The image or text is then transformed into a query embedding. 
 ## Step 4: The query embedding is used to perform a nearest neighbors similarity search in Qdrant.
 ## Step 5: The animal type is determined via the payload of the first returned result from Qdrant.  
 ## Step 6: The images returned are pulled via Qdrant payload (image link) + Github (image storage).
-## Step 7: If the user entered an OpenAI API Key, then the output of Step 5 is passed to OpenAI for an animal summary. 
+## Step 7: If the user entered an API Key, then the output of Step 5 is passed to the respective LLM (OpenAI or Gemini) for an animal summary. 
 
 # Feature 1: Text to Image Search!
 
