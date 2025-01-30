@@ -18,6 +18,7 @@ import zipfile
 import json
 
 from langchain_openai import OpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from typing import List
 from sentence_transformers import SentenceTransformer, util
 
@@ -98,28 +99,10 @@ def create_vector_db_input(_img_emb_loaded):
 	img_emb_loaded = _img_emb_loaded.tolist()
 	image_names = range(0,len(image_list))
 
-	#df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded), columns = ['image_name', 'image_path','embedding'])
-
-	#df = pd.DataFrame(zip(image_names, image_list, img_emb_loaded, img_type), columns = ['image_name', 'image_path','embedding', 'type'])
-
-	#payloads = df[['image_name', 'image_path']].fillna("Unknown").to_dict("records")
-	#payloads = df[['image_name', 'image_path', 'type']].fillna("Unknown").to_dict("records")
-
-	#client = QdrantClient(":memory:")
-	#collections = client.get_collections()
-	
-	#client.recreate_collection(collection_name="animals", vectors_config=rest.VectorParams(size=512, distance=rest.Distance.COSINE))
-
-	# client.upload_collection(collection_name="animals", 
-	# 			 vectors=list(map(list, df["embedding"].tolist())),
-	# 			 payload=payloads,
-	# 			 ids=[uuid.uuid4().hex for _ in payloads])
-
 	client = QdrantClient(
 		url = st.secrets["url"], 
 		api_key = st.secrets["api_key"]
 		,)
-
 	
 	return client
 
@@ -191,11 +174,6 @@ images_recs = st.sidebar.slider(label = 'Image Search: Select an animal using th
 image_path = image_list[images_recs - 1]
 image_path_image = Image.open(image_path)
 
-#resize_factor = 0.5  # Adjust this value for your desired percentage (e.g., 0.5 for 50% size)
-#new_width = int(image_path_image.width * resize_factor)
-#new_height = int(image_path_image.height * resize_factor)
-#image_path_image = image_path_image .resize((new_width, new_height))
-
 st.sidebar.write('')
 st.sidebar.write('')
 st.sidebar.write('')
@@ -205,24 +183,6 @@ with st.sidebar:
 	# Display an image	
         #st.image(image_path).resize(newsize)
 	st.image(image_path_image)
-
-
-# st.markdown(
-#     """
-#     <style>
-#         [data-testid=stSidebar]{
-#             text-align: center;
-#             display: block;
-#             margin-left: auto;
-# 	    margin-bottm:-75px;
-#             margin-right: auto;
-# 	    margin-top: -75px;     
-#             width: 100%;
-# 	    margin: 0;	         		
-#         }
-#     </style>
-#     """, unsafe_allow_html=True
-# )
 
 with st.sidebar:
     st.markdown("""
@@ -234,13 +194,7 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
     text_input = st.text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
-    openai_api_key = st.text_input('OpenAI API Key', "", type='password')
-
-
-#text_input = st.sidebar.text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
-
-
-#openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
+    openai_api_key = st.text_input('Gemini API Key', "", type='password')
 
 ####################################################################################################################################################
 
@@ -264,11 +218,16 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	result_str = "You selected the following animal: " + result_image_type	
 	
 	if openai_api_key != "":		
-		llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
+		# llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
+		# input_text = "Summarize in 100 words, the most interesting things about the following animal: " + result_str
+		# response = llm(input_text)
+		# st.write(response)
+
+		llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0, max_tokens=None, timeout=None, max_retries=2)
 		input_text = "Summarize in 100 words, the most interesting things about the following animal: " + result_str
 		response = llm(input_text)
 		st.write(response)
-		#st.write("You selected the following animal: " + result_image_type + ". " + response)
+
 	else:
 		st.write(result_str  + ".")
 		st.write("Enter an OpenAI API Key to learn more about " + result_image_type + 's!')
@@ -290,40 +249,6 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	#plt.title(f"Image {i}: {score}", fontsize=18)
 	fig.tight_layout()
 	fig.subplots_adjust(top=0.93)
-	
-	################################################################################################################
-	
-	# #Start of leveraging SentenceTransformer library
-	# # Find the top 10 most similar images to the bear embedding.
-	# most_similar_images = util.semantic_search(query_embeddings = animal_embedding, corpus_embeddings = img_emb_loaded, top_k = number_of_images)
-
-	# # Create a list to store the results.
-	# results = []
-
-	# # Loop over the images in the most_similar_images variable.
-	# for i in range(len(most_similar_images[0])):
-	# 	# Get the image ID and score of the current image.
- #  		image_id = most_similar_images[0][i]['corpus_id']
- #  		image_score = most_similar_images[0][i]['score']
-
- #  		results.append([image_id, image_score])
-	
-	# grid_size = math.ceil(math.sqrt(number_of_images))
-	# axes = []
-	# fig = plt.figure(figsize=(20, 15))
-        
-	# for i in range(len(results)):
- #  		axes.append(fig.add_subplot(grid_size, grid_size, i + 1))
- #  		plt.axis('off')
- #  		image_number = results[i][0]
- #  		image_name = image_list[image_number]
- #  		score = results[i][1]
- #  		img = Image.open(image_name)
- #  		img_resized = ImageOps.fit(img, (224, 224), Image.LANCZOS)
- #  		plt.imshow(img_resized)
-	# #plt.title(f"Image {i}: {score}", fontsize=18)
-	# fig.tight_layout()
-	# fig.subplots_adjust(top=0.93)
 
 ####################################################################################################################################################
 
