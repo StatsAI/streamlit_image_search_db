@@ -163,7 +163,7 @@ st.markdown("""
 
 #st.write('')
 #st.write('')
-st.title("Reverse Image Search via OpenAI + CLIP + Qdrant Vector Database")
+st.title("Reverse Image Search via OpenAI CLIP + Qdrant Vector Database + LLM")
 #st.write("This app performs reverse image search using OpenAI's CLIP + Qdrant Vector Database")
 
 images_recs = st.sidebar.slider(label = 'Image Search: Select an animal using the slider', min_value = 1,
@@ -230,7 +230,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 
 	else:
 		st.write(result_str  + ".")
-		st.write("Enter an OpenAI API Key to learn more about " + result_image_type + 's!')
+		st.write("Enter an API Key to learn more about " + result_image_type + 's!')
 
 	grid_size = math.ceil(math.sqrt(number_of_images))
 	axes = []
