@@ -218,7 +218,9 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	results = results[1:]
 
 	result_image_type = results[0].payload['type'].capitalize()
-	result_str = "You selected the following animal: " + result_image_type	
+	result_str = "You selected the following animal: " + result_image_type
+
+	openai_api_key = st.secrets["openai_api_key"]
 	
 	if openai_api_key != "":		
 		# llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
