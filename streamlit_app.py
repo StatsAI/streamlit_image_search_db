@@ -145,7 +145,7 @@ st.markdown(
             display: block;
             margin-left: auto;
             margin-right: auto;
-	    margin-top: -50px;
+	    margin-top: -80px;
             width: 100%;
 	    #margin: 0;	         		
         }
