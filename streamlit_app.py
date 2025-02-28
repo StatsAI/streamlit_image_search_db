@@ -197,7 +197,7 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
     text_input = st.text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
-    openai_api_key = st.text_input('Gemini API Key', "", type='password')
+    #openai_api_key = st.text_input('Gemini API Key', "", type='password')
 
 ####################################################################################################################################################
 
