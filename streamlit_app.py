@@ -31,7 +31,7 @@ from PIL import Image
 from PIL import ImageOps
 import pandas as pd
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
+#st.set_option('deprecation.showPyplotGlobalUse', False)
 
 ####################################################################################################################################################
 
@@ -264,3 +264,4 @@ if st.sidebar.button('Get Similar Images'):
 
 #st.write(text_input)
 ####################################################################################################################################################	
+
