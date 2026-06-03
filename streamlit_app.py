@@ -237,19 +237,19 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 
 		# --- UPDATE HERE ---
 		# Check if response content contains a JSON string, extract just the raw text block if it does
-		text_output = response.content
+		text_output = json.loads(response.content)[0]["text"]
 		
-		if isinstance(text_output, str):
-			# If the model wrapped the response inside an explicit JSON structure string, pull it out safely
-			try:
-				parsed_json = json.loads(text_output)
-				if isinstance(parsed_json, list) and len(parsed_json) > 0 and "text" in parsed_json[0]:
-					text_output = parsed_json[0]["text"]
-				elif isinstance(parsed_json, dict) and "text" in parsed_json:
-					text_output = parsed_json["text"]
-			except json.JSONDecodeError:
-				# It's already a clean string snippet, keep it as is
-				pass
+		# if isinstance(text_output, str):
+		# 	# If the model wrapped the response inside an explicit JSON structure string, pull it out safely
+		# 	try:
+		# 		parsed_json = json.loads(text_output)
+		# 		if isinstance(parsed_json, list) and len(parsed_json) > 0 and "text" in parsed_json[0]:
+		# 			text_output = parsed_json[0]["text"]
+		# 		elif isinstance(parsed_json, dict) and "text" in parsed_json:
+		# 			text_output = parsed_json["text"]
+		# 	except json.JSONDecodeError:
+		# 		# It's already a clean string snippet, keep it as is
+		# 		pass
 
 		# Use st.markdown for clean, readable paragraph presentation instead of structured code formatting
 		st.markdown(f"### Summary")
