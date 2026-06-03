@@ -237,7 +237,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 
 		# --- UPDATE HERE ---
 		# Check if response content contains a JSON string, extract just the raw text block if it does
-		text_output = json.loads(response.content)[0]["text"]
+		text_output = response.content[0]["text"]
 		
 		# if isinstance(text_output, str):
 		# 	# If the model wrapped the response inside an explicit JSON structure string, pull it out safely
