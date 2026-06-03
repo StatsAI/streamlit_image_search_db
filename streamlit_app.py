@@ -225,38 +225,15 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	if st.secrets["openai_api_key"] != "":
 
 		openai_api_key = st.secrets["openai_api_key"]
-		# llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
-		# input_text = "Summarize in 100 words, the most interesting things about the following animal: " + result_str
-		# response = llm(input_text)
-		# st.write(response)
 
 		llm = ChatGoogleGenerativeAI(model="gemini-robotics-er-1.6-preview", temperature=0.7, max_tokens=None, timeout=None, max_retries=2, google_api_key=openai_api_key)
 		input_text = "Summarize in 100 words, the most interesting things about the following animal: " + result_image_type
 		response = llm.invoke(input_text)
-		#st.write(response.content)
-
-		# --- UPDATE HERE ---
-		# Check if response content contains a JSON string, extract just the raw text block if it does
 		text_output = response.content[0]["text"]
-		
-		# if isinstance(text_output, str):
-		# 	# If the model wrapped the response inside an explicit JSON structure string, pull it out safely
-		# 	try:
-		# 		parsed_json = json.loads(text_output)
-		# 		if isinstance(parsed_json, list) and len(parsed_json) > 0 and "text" in parsed_json[0]:
-		# 			text_output = parsed_json[0]["text"]
-		# 		elif isinstance(parsed_json, dict) and "text" in parsed_json:
-		# 			text_output = parsed_json["text"]
-		# 	except json.JSONDecodeError:
-		# 		# It's already a clean string snippet, keep it as is
-		# 		pass
 
 		# Use st.markdown for clean, readable paragraph presentation instead of structured code formatting
 		st.markdown(f"### Summary")
 		st.write(text_output)
-
-		
-
 	else:
 		st.write(result_str  + ".")
 		st.write("Enter an API Key to learn more about " + result_image_type + 's!')
