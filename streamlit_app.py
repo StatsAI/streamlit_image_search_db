@@ -133,6 +133,10 @@ client = create_vector_db_input(img_emb_loaded)
 
 ####################################################################################################################################################
 
+# Pressing Enter in the text box sets this flag so the search runs without clicking the button
+def request_search():
+	st.session_state.run_search = True
+
 logo = Image.open('images/picture.png')
 #newsize = (95, 95)
 #logo = logo.resize(newsize)
@@ -196,7 +200,7 @@ with st.sidebar:
         </style>
     """, unsafe_allow_html=True)
 
-    text_input = st.text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text")
+    text_input = st.text_input("Text Search: Enter animal. (Delete to use slider)", "", key = "text", on_change = request_search)
     #openai_api_key = st.text_input('Gemini API Key', "", type='password')
 
 ####################################################################################################################################################
@@ -263,7 +267,10 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 
 ####################################################################################################################################################
 
-if st.sidebar.button('Get Similar Images'):
+search_clicked = st.sidebar.button('Get Similar Images')
+
+if search_clicked or st.session_state.get('run_search', False):
+	st.session_state.run_search = False
 	fig = plot_similar_images_new(image_path, text_input, number_of_images = 17)
 	st.pyplot(fig)
 	plt.close(fig)
