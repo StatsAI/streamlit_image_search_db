@@ -226,7 +226,10 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 
 		openai_api_key = st.secrets["openai_api_key"]
 
-		llm = ChatGoogleGenerativeAI(model="gemini-robotics-er-1.6-preview", temperature=0.7, max_tokens=None, timeout=None, max_retries=2, google_api_key=openai_api_key)
+		#models = gemini-robotics-er-2-preview
+		#models = gemini-robotics-er-1.6-preview
+
+		llm = ChatGoogleGenerativeAI(model="gemini-robotics-er-2-preview", temperature=0.7, max_tokens=None, timeout=None, max_retries=2, google_api_key=openai_api_key)
 		input_text = "Summarize in 100 words, the most interesting things about the following animal: " + result_image_type
 		response = llm.invoke(input_text)
 		text_output = response.content[0]["text"]
