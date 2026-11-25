@@ -232,7 +232,7 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 		llm = ChatGoogleGenerativeAI(model="gemini-robotics-er-2-preview", temperature=0.7, max_tokens=None, timeout=None, max_retries=2, google_api_key=openai_api_key)
 		input_text = "Summarize in 100 words, the most interesting things about the following animal: " + result_image_type
 		response = llm.invoke(input_text)
-		text_output = response.content[0]["text"]
+		text_output = response.content if isinstance(response.content, str) else response.content[0]["text"]
 
 		# Use st.markdown for clean, readable paragraph presentation instead of structured code formatting
 		st.markdown(f"### Summary")
@@ -259,18 +259,16 @@ def plot_similar_images_new(image_path, text_input, number_of_images: int = 6):
 	fig.tight_layout()
 	fig.subplots_adjust(top=0.93)
 
+	return fig
+
 ####################################################################################################################################################
 
 if st.sidebar.button('Get Similar Images'):
-	st.pyplot(plot_similar_images_new(image_path, text_input, number_of_images = 17))
+	fig = plot_similar_images_new(image_path, text_input, number_of_images = 17)
+	st.pyplot(fig)
+	plt.close(fig)
 	text_input = ""
 	st.session_state.text_input = ""
 
 #st.write(text_input)
-####################################################################################################################################################	
-
-
-
-
-
-
+####################################################################################################################################################
